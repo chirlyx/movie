@@ -21,7 +21,12 @@ public class UserDao extends AbstractDao<User> implements EntityDao<User> {
     }
 
     @Override
-    public List<User> readAll() {
+    public List<User> readWithLimit() {
+        return null;
+    }
+
+    @Override
+    public List<User> readWithLimit(int start, int total) {
         return null;
     }
 

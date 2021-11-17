@@ -12,6 +12,6 @@
 </head>
 <body>
 <h1> Hello </h1>
-
+<a href="${pageContext.request.contextPath}/controller?command=show_movies&page=1">show movies</a>
 </body>
 </html>
