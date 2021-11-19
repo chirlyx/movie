@@ -22,11 +22,25 @@ public abstract class AbstractDao<T extends Entity> {
 
     private final ProxyConnection proxyConnection;
 
+    private static final String RETRIEVE_NUMBER_OF_RECORDS = "SELECT COUNT(*) FROM ";
+
     protected AbstractDao(ProxyConnection proxyConnection) {
         this.proxyConnection = proxyConnection;
     }
 
     protected abstract List<T> retrieveAll();
+
+    public int retrieveNumberOfRecords(String tableName) throws DaoException {
+        try (final PreparedStatement statement = createStatement(RETRIEVE_NUMBER_OF_RECORDS + tableName)) {
+            final ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int num = resultSet.getInt(1);
+            return num;
+        } catch (SQLException e) {
+            LOG.error("", e.getMessage());
+            throw new DaoException(e);
+        }
+    }
 
     protected List<T> executeQuery(String query, RowMapper<T> mapper, Object... params) throws DaoException {
         try (final PreparedStatement statement = createStatement(query, params)) {

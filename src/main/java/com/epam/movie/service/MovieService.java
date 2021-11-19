@@ -11,6 +11,8 @@ import java.util.List;
 public class MovieService {
     private DaoHelperFactory daoHelperFactory;
 
+    private static final String TABLE_NAME = "movie";
+
     public MovieService(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
@@ -19,6 +21,15 @@ public class MovieService {
         try(DaoHelper daoHelper = daoHelperFactory.create()){
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.readWithLimit(offset, limit);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public Integer numberOfRecords() throws ServiceException {
+        try(DaoHelper daoHelper = daoHelperFactory.create()){
+            MovieDao movieDao = daoHelper.createMovieDao();
+            return movieDao.retrieveNumberOfRecords(TABLE_NAME);
         } catch (Exception e) {
             throw new ServiceException(e);
         }

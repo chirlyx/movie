@@ -10,7 +10,7 @@ public interface EntityDao<T extends Entity> {
 
     T create(T entity);
 
-    List<T> readWithLimit();
+    List<T> readAll();
 
     List<T> readWithLimit(int offset, int limit) throws DaoException;
 

@@ -41,7 +41,7 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
     }
 
     @Override
-    public List<Movie> readWithLimit() {
+    public List<Movie> readAll() {
         return null;
     }
 
