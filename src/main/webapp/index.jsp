@@ -20,6 +20,8 @@
       ${requestScope.errorLogin}
   </c:if>
     <input type="submit" value="Log in"/>
+    <a href="${pageContext.request.contextPath}/controller?command=sign_up_page">Sign up</a>
+
 </form>
 </body>
 </html>

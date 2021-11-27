@@ -1,5 +1,6 @@
 package com.epam.movie.service;
 
+import com.epam.movie.dao.AccountDao;
 import com.epam.movie.dao.DaoHelper;
 import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.UserDao;
@@ -22,5 +23,15 @@ public class UserService {
         } catch (Exception e) {
             throw new ServiceException(e);
         }
+    }
+
+    public void create(User user) throws ServiceException {
+        try(DaoHelper daoHelper = daoHelperFactory.create()){
+            UserDao userDao = daoHelper.createUserDao();
+            userDao.create(user);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+
     }
 }

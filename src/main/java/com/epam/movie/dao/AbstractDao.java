@@ -3,9 +3,7 @@ package com.epam.movie.dao;
 import com.epam.movie.db.ProxyConnection;
 import com.epam.movie.exception.DaoException;
 import com.epam.movie.mapper.RowMapper;
-import com.epam.movie.mapper.UserMapper;
 import com.epam.movie.model.Entity;
-import com.epam.movie.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +25,7 @@ public abstract class AbstractDao<T extends Entity> {
         this.proxyConnection = proxyConnection;
     }
 
-    protected abstract List<T> retrieveAll();
+    //protected abstract List<T> retrieveAll();
 
     public int retrieveNumberOfRecords(String tableName) throws DaoException {
         try (final PreparedStatement statement = createStatement(RETRIEVE_NUMBER_OF_RECORDS + tableName)) {
@@ -78,7 +75,7 @@ public abstract class AbstractDao<T extends Entity> {
         }
     }
 
-    protected abstract void create(String query, Object... params);
+    //protected abstract void create(String query, Object... params);
 
     private PreparedStatement createStatement(String query, Object... params) throws SQLException {
         PreparedStatement statement = proxyConnection.prepareStatement(query);

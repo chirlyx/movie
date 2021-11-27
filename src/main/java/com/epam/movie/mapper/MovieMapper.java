@@ -2,7 +2,6 @@ package com.epam.movie.mapper;
 
 import com.epam.movie.model.Entity;
 import com.epam.movie.model.Movie;
-import com.epam.movie.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

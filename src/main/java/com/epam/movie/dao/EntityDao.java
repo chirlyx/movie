@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface EntityDao<T extends Entity> {
 
-    T create(T entity);
+    T create(T entity) throws DaoException;
 
     List<T> readAll();
 

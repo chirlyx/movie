@@ -1,16 +1,27 @@
 package com.epam.movie.model;
 
-public class Account implements Entity{
+import java.util.Objects;
+
+public class Account implements Entity {
     Integer id;
     String login;
     String password;
-    int roleId;
+    Integer roleId;
 
-    public Account(Integer id, String login, String password, int role) {
+    public Account(Integer id, String login, String password, Integer role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.roleId = role;
+    }
+
+    public Account(String login, String password, int roleId) {
+        this.login = login;
+        this.password = password;
+        this.roleId = 2;
+    }
+
+    public Account() {
     }
 
     public Integer getId() {
@@ -37,11 +48,36 @@ public class Account implements Entity{
         this.password = password;
     }
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return id.equals(account.id) && login.equals(account.login) && password.equals(account.password) && roleId.equals(account.roleId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, roleId);
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", roleId=" + roleId +
+                '}';
+    }
+
+
 }

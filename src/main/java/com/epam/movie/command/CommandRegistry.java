@@ -2,7 +2,8 @@ package com.epam.movie.command;
 
 public enum CommandRegistry {
     MAIN_PAGE("main_page"),
-    LOGIN("login");
+    LOGIN("login"),
+    SIGN_UP("sign_up");
 
     private final String path;
 

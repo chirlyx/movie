@@ -21,6 +21,10 @@ public class DaoHelper implements AutoCloseable{
         return new MovieDao(proxyConnection);
     }
 
+    public AccountDao createAccountDao(){
+        return new AccountDao(proxyConnection);
+    }
+
     @Override
     public void close() throws Exception {
         try {
