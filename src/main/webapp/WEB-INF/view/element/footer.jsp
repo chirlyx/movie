@@ -1,6 +1,6 @@
-<footer class="bg-light text-center text-lg-start fixed-bottom" style="background-color: #21081a;">
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+<footer class="text-center text-lg-start" style="background-color: #231f20;">
+  <div class="text-center p-3" style="color: #ffffff;">
     2021 Copyright
-    <a class="text-dark" href="#"></a>
+    <a class="text-light" href="#"></a>
   </div>
 </footer>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Movie | Sign Up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/signup.css"/>
@@ -10,12 +10,12 @@
 <section class="container-fluid">
     <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr>
             <form class="form-container" action="${pageContext.request.contextPath}/controller?command=sign_up"
                   method="post">
                 <div class="form-group">
+                    <h1>Sign Up</h1>
+                    <p>Please fill in this form to create an account.</p>
+                    <hr>
                     <label for="inputLogin">Login</label>
                     <input id="inputLogin" type="text" class="form-control" name="login" placeholder="Login">
                 </div>
