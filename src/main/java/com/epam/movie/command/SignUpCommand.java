@@ -5,6 +5,7 @@ import com.epam.movie.model.Account;
 import com.epam.movie.model.User;
 import com.epam.movie.service.AccountService;
 import com.epam.movie.service.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,10 @@ public class SignUpCommand implements Command {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
 
-        Account account = new Account(login, password, 2);
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+        System.out.println(hashed);
+
+        Account account = new Account(login, hashed, 2);
         User user = new User(accountService.create(account), firstName, lastName, 1);
         userService.create(user);
 
