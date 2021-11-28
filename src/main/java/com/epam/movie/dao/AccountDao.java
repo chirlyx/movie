@@ -27,7 +27,7 @@ public class AccountDao extends AbstractDao<Account> implements EntityDao<Accoun
         final String login = entity.getLogin();
         final String password = entity.getPassword();
         executeUpdate(CREATE, login, password);
-        return retrieveByLogin(login).orElse(new Account());
+        return retrieveByLogin(login);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class AccountDao extends AbstractDao<Account> implements EntityDao<Accoun
         return Optional.empty();
     }
 
-    public Optional<Account> retrieveByLogin(String login) throws DaoException {
-        return executeForSingleResult(RETRIEVE_BY_LOGIN, new AccountMapper(), login);
+    public Account retrieveByLogin(String login) throws DaoException {
+        return executeForSingleResult(RETRIEVE_BY_LOGIN, new AccountMapper(), login).orElse(new Account());
     }
 
     @Override
