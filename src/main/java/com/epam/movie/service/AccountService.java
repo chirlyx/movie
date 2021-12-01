@@ -34,6 +34,15 @@ public class AccountService {
         }
     }
 
+    public Account retrieveByLogin(String login) throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
+            AccountDao accountDao = daoHelper.createAccountDao();
+            return accountDao.retrieveByLogin(login.trim());
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
     private String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }

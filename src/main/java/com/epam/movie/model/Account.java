@@ -6,19 +6,19 @@ public class Account implements Entity {
     Integer id;
     String login;
     String password;
-    Integer roleId;
+    Role role;
 
-    public Account(Integer id, String login, String password, Integer role) {
+    public Account(Integer id, String login, String password, Integer roleId) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.roleId = role;
+        this.role = Role.byId(roleId);
     }
 
-    public Account(String login, String password, int roleId) {
+    public Account(String login, String password) {
         this.login = login;
         this.password = password;
-        this.roleId = 2;
+        this.role = Role.USER;
     }
 
     public Account() {
@@ -48,12 +48,12 @@ public class Account implements Entity {
         this.password = password;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -61,12 +61,12 @@ public class Account implements Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return id.equals(account.id) && login.equals(account.login) && password.equals(account.password) && roleId.equals(account.roleId);
+        return Objects.equals(id, account.id) && Objects.equals(login, account.login) && Objects.equals(password, account.password) && role == account.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, roleId);
+        return Objects.hash(id, login, password, role);
     }
 
     @Override
@@ -75,9 +75,7 @@ public class Account implements Entity {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", roleId=" + roleId +
+                ", role=" + role +
                 '}';
     }
-
-
 }

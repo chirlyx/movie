@@ -4,8 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Role {
-    ADMIN,
-    USER;
+    ADMIN(1),
+    USER(2);
+
+    private final Integer roleId;
+
+    Role(Integer roleId) {
+        this.roleId = roleId;
+    }
 
     private static final List<Role> ALL_AVAILABLE_ROLES = Arrays.asList(values());
 
@@ -20,5 +26,18 @@ public enum Role {
             }
         }
         return USER;
+    }
+
+    public static Role byId (Integer id) {
+        for (Role role : values()) {
+            if (role.getRoleId().equals(id)) {
+                return role;
+            }
+        }
+        return USER;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
     }
 }
