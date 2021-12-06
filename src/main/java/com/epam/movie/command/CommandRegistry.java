@@ -10,7 +10,8 @@ public enum CommandRegistry {
     LOGIN("login", Role.ADMIN, Role.USER),
     SHOW_MOVIES_PAGE("show_movies",Role.USER),
     SIGN_UP("sign_up", Role.ADMIN, Role.USER),
-    SHOW_SIGN_UP_PAGE("sign_up_page", Role.ADMIN, Role.USER);
+    SHOW_SIGN_UP_PAGE("sign_up_page", Role.ADMIN, Role.USER),
+    SHOW_SINGLE_MOVIE_PAGE("single_movie_page",Role.ADMIN, Role.USER);
 
     private final String path;
     private final List<Role> allowedRoles;

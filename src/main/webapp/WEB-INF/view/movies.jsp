@@ -8,37 +8,49 @@
 
 </head>
 <body>
-<jsp:include page="element/header.jsp"/>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Category</th>
-    </tr>
-    <c:forEach var="movie" items="${requestScope.movies}">
-    <tr>
-       <td>${movie.id}</td>
-         <td>${movie.title}</td>
-        <td>${movie.year}</td>
-        <td>${movie.categoryId}</td>
-    </tr>
-    </c:forEach>
 
-    <table border="1" cellpadding="5" cellspacing="5">
-        <tr>
-            <c:forEach begin="1" end="${numberOfPages}" var="i">
-                <c:choose>
-                    <c:when test="${currentPage eq i}">
-                        <td>${i}</td>
-                    </c:when>
-                    <c:otherwise>
-                        <td><a href="controller?command=show_movies&page=${i}">${i}</a></td>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </tr>
-    </table>
-    <jsp:include page="element/footer.jsp"/>
+<jsp:include page="element/header.jsp"/>
+
+<section class="bg-light">
+    <div class="container-lg">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="mx-lg-4 my-3">
+                    Movie List
+                    <small class="text-muted">Page ${currentPage} out of ${numberOfPages}</small>
+                </h1>
+                <div class="list-group">
+                    <c:forEach var="movie" items="${requestScope.movies}">
+                        <div class="list-group-item py-3 my-2 ">
+                            <h5 class="mb-1"><a
+                                    href="${pageContext.request.contextPath}/controller?command=single_movie_page&movie=${movie.id}">${movie.title}</a>
+                                (${movie.id})</h5>
+                            <hr>
+                            <p class="mb-1">Year: ${movie.year}</p>
+                            <p class="mb-1">Category: ${movie.category}</p>
+                        </div>
+                    </c:forEach>
+                </div>
+                <table border="1" cellpadding="5" cellspacing="5">
+                    <tr>
+                        <c:forEach begin="1" end="${numberOfPages}" var="i">
+                            <c:choose>
+                                <c:when test="${currentPage eq i}">
+                                    <td>${i}</td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td><a href="controller?command=show_movies&page=${i}">${i}</a></td>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<jsp:include page="element/footer.jsp"/>
+
 </body>
 </html>

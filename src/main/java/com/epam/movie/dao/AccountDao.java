@@ -42,7 +42,7 @@ public class AccountDao extends AbstractDao<Account> implements EntityDao<Accoun
 
     @Override
     public Optional<Account> readById(int id) throws DaoException {
-        return Optional.empty();
+        return null;
     }
 
     public Account retrieveByLogin(String login) throws DaoException {

@@ -1,13 +1,10 @@
 package com.epam.movie.service;
 
-import com.epam.movie.dao.AccountDao;
 import com.epam.movie.dao.DaoHelper;
 import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.UserDao;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.User;
-
-import java.util.Optional;
 
 public class UserService {
     private DaoHelperFactory daoHelperFactory;
@@ -16,17 +13,17 @@ public class UserService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
-    public Optional<User> retrieveById (Integer id) throws ServiceException {
-        try(DaoHelper daoHelper = daoHelperFactory.create()){
+    public User retrieveById(Integer id) throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
             UserDao userDao = daoHelper.createUserDao();
-            return userDao.readById(id);
+            return userDao.readById(id).orElse(new User());
         } catch (Exception e) {
             throw new ServiceException(e);
         }
     }
 
     public void create(User user) throws ServiceException {
-        try(DaoHelper daoHelper = daoHelperFactory.create()){
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
             UserDao userDao = daoHelper.createUserDao();
             userDao.create(user);
         } catch (Exception e) {

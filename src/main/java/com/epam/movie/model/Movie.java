@@ -1,16 +1,20 @@
 package com.epam.movie.model;
 
-public class Movie implements Entity{
-    Integer id;
-    String title;
-    Integer year;
-    Integer categoryId;
+import java.util.*;
 
-    public Movie(Integer id, String title, Integer year, Integer categoryId) {
+public class Movie implements Entity {
+    private Integer id;
+    private String title;
+    private Integer year;
+    private Category category;
+    private List<Actor> actorList;
+
+    public Movie(Integer id, String title, Integer year, Integer categoryId, Actor... actorList) {
         this.id = id;
         this.title = title;
         this.year = year;
-        this.categoryId = categoryId;
+        this.category = Category.byId(categoryId);
+        this.actorList = actorList != null && actorList.length > 0 ? Arrays.asList(actorList) : new ArrayList<>();
     }
 
     public Movie() {
@@ -41,12 +45,33 @@ public class Movie implements Entity{
         this.year = year;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(id, movie.id) && Objects.equals(title, movie.title) && Objects.equals(year, movie.year) && category == movie.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, year, category);
     }
 
     @Override
@@ -55,7 +80,7 @@ public class Movie implements Entity{
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", year=" + year +
-                ", categoryId=" + categoryId +
+                ", category=" + category +
                 '}';
     }
 }
