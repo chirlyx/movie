@@ -6,27 +6,31 @@ import com.epam.movie.exception.DaoException;
 
 import java.sql.SQLException;
 
-public class DaoHelper implements AutoCloseable{
+public class DaoHelper implements AutoCloseable {
     private final ProxyConnection proxyConnection;
 
     public DaoHelper(LockingConnectionPool instance) {
         proxyConnection = instance.takeConnection();
     }
 
-    public UserDao createUserDao(){
+    public UserDao createUserDao() {
         return new UserDao(proxyConnection);
     }
 
-    public MovieDao createMovieDao(){
+    public MovieDao createMovieDao() {
         return new MovieDao(proxyConnection);
     }
 
-    public AccountDao createAccountDao(){
+    public AccountDao createAccountDao() {
         return new AccountDao(proxyConnection);
     }
 
-    public ActorDao createActorDao(){
+    public ActorDao createActorDao() {
         return new ActorDao(proxyConnection);
+    }
+
+    public ReviewDao createReviewDao() {
+        return new ReviewDao(proxyConnection);
     }
 
     @Override

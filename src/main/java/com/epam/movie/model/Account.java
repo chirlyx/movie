@@ -3,10 +3,10 @@ package com.epam.movie.model;
 import java.util.Objects;
 
 public class Account implements Entity {
-    Integer id;
-    String login;
-    String password;
-    Role role;
+    private Integer id;
+    private String login;
+    private String password;
+    private Role role;
 
     public Account(Integer id, String login, String password, Integer roleId) {
         this.id = id;

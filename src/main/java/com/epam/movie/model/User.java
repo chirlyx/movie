@@ -3,10 +3,10 @@ package com.epam.movie.model;
 import java.util.Objects;
 
 public class User implements Entity{
-    Integer id;
-    String firstName;
-    String lastName;
-    Integer statusId;
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    private Integer statusId;
 
     public User(Integer userId, String firstName, String lastname, int statusId) {
         this.id = userId;

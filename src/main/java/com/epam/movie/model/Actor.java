@@ -3,8 +3,8 @@ package com.epam.movie.model;
 import java.util.Objects;
 
 public class Actor implements Entity{
-    Integer id;
-    String name;
+    private Integer id;
+    private String name;
 
     public Actor(Integer id, String name) {
         this.id = id;

@@ -16,7 +16,8 @@
             <div class="col-lg-8">
                 <div class="list-group">
                     <div class="list-group-item py-3 my-3">
-                        <h4 class="mb-1">${requestScope.movie.id} ${requestScope.movie.title}, ${requestScope.movie.year}</h4>
+                        <h2 class="mb-1">${requestScope.movie.title}, ${requestScope.movie.year}
+                            (${requestScope.movie.id})</h2>
                         <hr>
                         <p class="mb-1">Category: ${requestScope.movie.category}</p>
                         <p class="mb-1">Actors:
@@ -24,6 +25,82 @@
                                 ${actor.name}
                             </c:forEach>
                         </p>
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5>Review</h5>
+                            </div>
+                            <c:if test="${!requestScope.isReview}">
+                                <div class="card-body">
+                                    <h6 class="card-title">Rate the movie and leave a comment here:</h6>
+                                    <form name="review-form" class="form-container"
+                                          action="${pageContext.request.contextPath}/controller?command=submit_review&movie=${requestScope.movie.id}"
+                                          method="post">
+                                        <div class="form-group row">
+                                            <label for="movieName" class="col-sm-2 col-form-label">Movie</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                       id="movieName" value="${requestScope.movie.title}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="mark" class="col-sm-2 col-form-label">Mark:</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" name="mark" id="mark">
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="comment" class="col-sm-2 col-form-label">Comment:</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="comment" id="comment"
+                                                          rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">With supporting text below as a natural lead-in to
+                                            additional content.</p>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.isReview}">
+                                <div class="card-body">
+                                    <h6 class="card-title">Your review:</h6>
+                                    <form name="review-form" class="form-container"
+                                          action="${pageContext.request.contextPath}/controller?command=delete_review&movie=${requestScope.movie.id}"
+                                          method="post">
+                                        <div class="form-group row">
+                                            <label for="reviewMovieName" class="col-sm-2 col-form-label">Movie</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                       id="reviewMovieName" value="${requestScope.movie.title}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="reviewMark" class="col-sm-2 col-form-label">Mark</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                       id="reviewMark" value="${requestScope.mark}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="reviewComment" class="col-sm-2 col-form-label">Comment</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                       id="reviewComment" value="${requestScope.comment}">
+                                            </div>
+                                        </div>
+                                        <p class="card-text">Click the button if you want to delete your review.</p>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </form>
+                                </div>
+                            </c:if>
+                        </div>
                     </div>
                 </div>
             </div>
