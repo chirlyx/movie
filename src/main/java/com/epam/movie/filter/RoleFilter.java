@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/controller")
 public class RoleFilter implements Filter {
 
     private static final Map<String, List<Role>> ROLES_BY_COMMANDS = new HashMap<>();
@@ -46,8 +46,10 @@ public class RoleFilter implements Filter {
         HttpSession session = request.getSession();
 
         String command = request.getParameter(COMMAND_PARAMETER);
+        System.out.println(command);
 
         if (command == null) {
+            System.out.println(1);
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE);
             dispatcher.forward(servletRequest, servletResponse);
         }
@@ -73,15 +75,21 @@ public class RoleFilter implements Filter {
     }
 
     public void authentication(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain, String command) throws ServletException, IOException {
+        System.out.println(command);
         if (command.equals(SIGN_UP_PAGE)) {
+            System.out.println(2);
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("WEB-INF/view/signup.jsp");
             dispatcher.forward(servletRequest, servletResponse);
         } else if (command.equals(SIGN_UP_COMMAND)) {
+            System.out.println(3);
             filterChain.doFilter(servletRequest, servletResponse);
         } else if (!command.equals(LOGIN_ATTRIBUTE)) {
+            System.out.println(4);
             RequestDispatcher dispatcher = servletRequest.getRequestDispatcher(LOGIN_PAGE);
             dispatcher.forward(servletRequest, servletResponse);
         } else {
+            System.out.println(5);
+
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
