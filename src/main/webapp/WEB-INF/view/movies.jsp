@@ -13,18 +13,35 @@
 
 <section class="bg-light">
     <div class="container-lg">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mx-0">
             <div class="col-lg-8">
                 <h1 class="mx-lg-4 my-3">
                     Movie List
                     <small class="text-muted">Page ${currentPage} out of ${numberOfPages}</small>
                 </h1>
+                <hr>
+                <c:if test="${sessionScope.account.isAdmin()}">
+                    <div class="card bg-secondary mb-3">
+                        <div class="card-body">
+                            <h3><a class="nav-link text-white text-center"
+                                   href="controller?command=edit_movie&movie=new">Add a
+                                movie +</a></h3>
+                        </div>
+                    </div>
+                </c:if>
+                <%--<img src="${pageContext.request.contextPath}/img/flower.png">--%>
                 <div class="list-group">
                     <c:forEach var="movie" items="${requestScope.movies}">
-                        <div class="list-group-item py-3 my-2 ">
-                            <h5 class="mb-1"><a
-                                    href="${pageContext.request.contextPath}/controller?command=single_movie_page&movie=${movie.id}">${movie.title}</a>
-                                (${movie.id})</h5>
+                        <div class="list-group-item py-3 my-2">
+                            <h5 class="mb-1">
+                                <c:if test="${sessionScope.account.isAdmin()}">
+                                    <a href="${pageContext.request.contextPath}/controller?command=edit_movie&movie=${movie.id}">${movie.title}</a>
+                                </c:if>
+                                <c:if test="${sessionScope.account.isUser()}">
+                                    <a href="${pageContext.request.contextPath}/controller?command=single_movie_page&movie=${movie.id}">${movie.title}</a>
+                                </c:if>
+                                (${movie.id})
+                            </h5>
                             <hr>
                             <p class="mb-1">Year: ${movie.year}</p>
                             <p class="mb-1">Category: ${movie.category}</p>

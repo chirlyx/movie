@@ -17,6 +17,13 @@ public class Movie implements Entity {
         this.actorList = actorList != null && actorList.length > 0 ? Arrays.asList(actorList) : new ArrayList<>();
     }
 
+    public Movie(String title, Integer year, Integer categoryId, Actor... actorList) {
+        this.title = title;
+        this.year = year;
+        this.category = Category.byId(categoryId);
+        this.actorList = actorList != null && actorList.length > 0 ? Arrays.asList(actorList) : new ArrayList<>();
+    }
+
     public Movie() {
     }
 

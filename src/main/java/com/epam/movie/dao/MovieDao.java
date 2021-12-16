@@ -14,6 +14,10 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
     private static final String READ_WITH_LIMIT = "SELECT * FROM movie LIMIT ?, ?";
     private static final String READ_ALL = "SELECT id, title, year FROM movie";
     private static final String READ_BY_ID = "SELECT * FROM movie WHERE id = ?";
+    private static final String READ_BY_TITLE = "SELECT * FROM movie WHERE title = ?";
+    private static final String CREATE = "INSERT INTO movie (title, year, category_id) VALUES (?, ?, ?)";
+    private static final String UPDATE = "UPDATE movie SET title = ?, year = ?, category_id = ? WHERE (id = ?)";
+    private static final String DELETE = "DELETE FROM movie WHERE id = ?";
 
     protected MovieDao(ProxyConnection proxyConnection) {
         super(proxyConnection);
@@ -25,8 +29,12 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
     }
 
     @Override
-    public Movie create(Movie entity) {
-        return null;
+    public Movie create(Movie entity) throws DaoException {
+        String title = entity.getTitle();
+        Integer year = entity.getYear();
+        Integer categoryId = entity.getCategory().getCategoryId();
+        executeUpdate(CREATE, title, year, categoryId);
+        return readByTitle(title).orElse(new Movie());
     }
 
     @Override
@@ -39,13 +47,23 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
         return executeForSingleResult(READ_BY_ID, new MovieMapper(), id);
     }
 
-    @Override
-    public Movie update(Movie entity) {
-        return null;
+    public Optional<Movie> readByTitle(String title) throws DaoException {
+        return executeForSingleResult(READ_BY_TITLE, new MovieMapper(), title);
     }
 
     @Override
-    public boolean delete(int id) {
-        return false;
+    public Movie update(Movie entity) throws DaoException {
+        Integer id = entity.getId();
+        String title = entity.getTitle();
+        Integer year = entity.getYear();
+        Integer categoryId = entity.getCategory().getCategoryId();
+        executeUpdate(UPDATE, title, year, categoryId, id);
+        return readByTitle(title).orElse(new Movie());
+    }
+
+    @Override
+    public boolean delete(int id) throws DaoException {
+        executeUpdate(DELETE, id);
+        return !readById(id).isPresent();
     }
 }

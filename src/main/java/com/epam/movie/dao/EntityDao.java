@@ -16,7 +16,7 @@ public interface EntityDao<T extends Entity> {
 
     Optional<T> readById(int id) throws DaoException;
 
-    T update(T entity);
+    T update(T entity) throws DaoException;
 
     boolean delete(int id) throws DaoException;
 }

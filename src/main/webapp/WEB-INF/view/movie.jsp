@@ -5,6 +5,9 @@
     <title>Movie | Movie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 </head>
 <body>
 
@@ -12,7 +15,7 @@
 
 <section class="bg-light">
     <div class="container-lg">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mx-0">
             <div class="col-lg-8">
                 <div class="list-group">
                     <div class="list-group-item py-3 my-3">
