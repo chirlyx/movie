@@ -15,7 +15,7 @@
             </c:if>
             <c:if test="${sessionScope.account.isAdmin()}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reviews</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=show_users&page=1">Users</a>
                 </li>
             </c:if>
         </ul>

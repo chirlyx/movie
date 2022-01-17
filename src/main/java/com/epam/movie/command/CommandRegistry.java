@@ -9,6 +9,7 @@ public enum CommandRegistry {
     SHOW_MAIN_PAGE("main_page", Role.ADMIN, Role.USER),
     LOGIN("login", Role.ADMIN, Role.USER),
     SHOW_MOVIES_PAGE("show_movies", Role.ADMIN, Role.USER),
+    SHOW_USERS_PAGE("show_users", Role.ADMIN),
     SHOW_EDIT_MOVIE_PAGE("edit_movie", Role.ADMIN),
     SIGN_UP("sign_up", Role.ADMIN, Role.USER),
     SHOW_SIGN_UP_PAGE("sign_up_page", Role.ADMIN, Role.USER),
@@ -17,8 +18,8 @@ public enum CommandRegistry {
     DELETE_REVIEW("delete_review", Role.ADMIN, Role.USER),
     CREATE_MOVIE("create_movie", Role.ADMIN),
     DELETE_MOVIE("delete_movie", Role.ADMIN),
-    UPDATE_MOVIE("update_movie", Role.ADMIN);
-
+    UPDATE_MOVIE("update_movie", Role.ADMIN),
+    UPDATE_STATUS("update_status", Role.ADMIN);
 
     private final String path;
     private final List<Role> allowedRoles;
@@ -36,3 +37,4 @@ public enum CommandRegistry {
         return allowedRoles;
     }
 }
+

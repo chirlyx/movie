@@ -19,6 +19,8 @@ public class CommandFactory {
                 return new LoginCommand(userService, accountService);
             case "show_movies":
                 return new ShowMoviePageCommand(movieService);
+            case "show_users":
+                return new ShowUserPageCommand(userService);
             case "main_page":
                 return new ShowMainPageCommand();
             case "sign_up_page":
@@ -39,6 +41,8 @@ public class CommandFactory {
                 return new UpdateMovieCommand(movieService);
             case "create_movie":
                 return new CreateMovieCommand(movieService);
+            case "update_status":
+                return new UpdateStatusCommand(userService);
             default:
                 return null;
         }

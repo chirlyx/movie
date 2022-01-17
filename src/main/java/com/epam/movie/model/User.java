@@ -6,13 +6,13 @@ public class User implements Entity{
     private Integer id;
     private String firstName;
     private String lastName;
-    private Integer statusId;
+    private Status status;
 
     public User(Integer userId, String firstName, String lastname, int statusId) {
         this.id = userId;
         this.firstName = firstName;
         this.lastName = lastname;
-        this.statusId = statusId;
+        this.status = Status.byId(statusId);
     }
 
     public User(){}
@@ -41,12 +41,12 @@ public class User implements Entity{
         this.lastName = lastName;
     }
 
-    public Integer getStatusId() {
-        return statusId;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
@@ -54,12 +54,12 @@ public class User implements Entity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id.equals(user.id) && firstName.equals(user.firstName) && lastName.equals(user.lastName) && statusId.equals(user.statusId);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && status == user.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, statusId);
+        return Objects.hash(id, firstName, lastName, status);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class User implements Entity{
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", statusId=" + statusId +
+                ", status=" + status +
                 '}';
     }
 }
