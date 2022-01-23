@@ -9,16 +9,18 @@
 <body>
 <jsp:include page="element/header.jsp"/>
 
-<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #c9db48">
+<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #b6c0d5">
     <div class="w-50 col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Punny headline</h1>
-        <h2><ct:time/></h2>
-        <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+        <h1 class="display-4 font-weight-normal">Movie diary</h1>
+        <h2>It's already <ct:time/> o'clock, high time you watched some movies!</h2>
+        <p class="lead font-weight-normal">
+            We present to you a personal movie diary. Our team offers a selected number of movies you can choose from, while you can leave reviews.
+        </p>
         <a class="btn btn-outline-secondary" href="#">Coming soon</a>
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #76cdd8">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" >
     <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Punny headline</h1>
         <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
@@ -26,7 +28,7 @@
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #dee3ed">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Punny headline</h1>
         <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>

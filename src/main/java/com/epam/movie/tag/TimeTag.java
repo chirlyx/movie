@@ -12,9 +12,9 @@ public class TimeTag extends TagSupport {
         JspWriter out = pageContext.getOut();
         try {
             LocalTime time = LocalTime.now();
-            out.print(time.getHour() + ":" + time.getMinute());
+            out.print(time.getHour());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new JspException(e);
         }
         return SKIP_BODY;
     }
