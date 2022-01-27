@@ -9,9 +9,9 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=show_movies&page=1">Movies</a>
             </li>
             <c:if test="${sessionScope.account.isUser()}">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
             </c:if>
             <c:if test="${sessionScope.account.isAdmin()}">
                 <li class="nav-item">
@@ -19,5 +19,8 @@
                 </li>
             </c:if>
         </ul>
+        <span class="navbar-text">
+            <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
+    </span>
     </div>
 </nav>

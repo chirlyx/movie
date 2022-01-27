@@ -17,6 +17,8 @@ public class CommandFactory {
         switch (type) {
             case "login":
                 return new LoginCommand(userService, accountService);
+            case "logout":
+                return new LogoutCommand();
             case "show_movies":
                 return new ShowMoviePageCommand(movieService);
             case "show_users":

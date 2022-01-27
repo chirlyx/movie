@@ -7,14 +7,15 @@
     <title>Movie | Log In</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/signup.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/signup.css"/>
 </head>
 <body>
 <section class="container-fluid">
     <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-3">
 
-            <form name="login-form" class="form-container" action="${pageContext.request.contextPath}/controller?command=login" method="post">
+            <form name="login-form" class="form-container"
+                  action="${pageContext.request.contextPath}/controller?command=login" method="post">
                 <h3>Please log in:</h3>
                 <hr>
                 <label for="login-input">Login:</label>

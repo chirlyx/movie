@@ -8,6 +8,7 @@ import java.util.List;
 public enum CommandRegistry {
     SHOW_MAIN_PAGE("main_page", Role.ADMIN, Role.USER),
     LOGIN("login", Role.ADMIN, Role.USER),
+    LOGOUT("logout",Role.ADMIN, Role.USER),
     SHOW_MOVIES_PAGE("show_movies", Role.ADMIN, Role.USER),
     SHOW_USERS_PAGE("show_users", Role.ADMIN),
     SHOW_EDIT_MOVIE_PAGE("edit_movie", Role.ADMIN),
