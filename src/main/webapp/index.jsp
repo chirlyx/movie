@@ -19,10 +19,10 @@
                 <h3>Please log in:</h3>
                 <hr>
                 <label for="login-input">Login:</label>
-                <input id="login-input" type="text" name="login" value=""/>
+                <input id="login-input" type="text" name="login" value="" required/>
                 <br>
                 <label for="password-input">Password:</label>
-                <input id="password-input" type="password" name="password" value=""/>
+                <input id="password-input" type="password" name="password" value="" required/>
                 <br/>
                 <c:if test="${requestScope.errorLogin != null}">
                     ${requestScope.errorLogin}
