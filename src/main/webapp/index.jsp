@@ -18,18 +18,28 @@
                   action="${pageContext.request.contextPath}/controller?command=login" method="post">
                 <h3>Please log in:</h3>
                 <hr>
-                <label for="login-input">Login:</label>
-                <input id="login-input" type="text" name="login" value="" required/>
-                <br>
-                <label for="password-input">Password:</label>
-                <input id="password-input" type="password" name="password" value="" required/>
-                <br/>
+                <div class="wrapper__content">
+                    <div class="labels mr-3 my-2">
+                        <label for="login-input">Login:</label>
+                        <label for="password-input">Password:</label>
+                    </div>
+                    <div class="inputs my-2">
+                        <input id="login-input" type="text" name="login" value="" required/>
+                        <input id="password-input" type="password" name="password" value="" required/>
+                    </div>
+                </div>
+
                 <c:if test="${requestScope.errorLogin != null}">
                     ${requestScope.errorLogin}
                 </c:if>
-                <input type="submit" value="Log in"/>
-                <a href="${pageContext.request.contextPath}/controller?command=sign_up_page">Sign up</a>
-
+                <div class="buttons">
+                    <div class="mr-2">
+                        <input type="submit" value="Log in"/>
+                    </div>
+                    <div>
+                        <a href="${pageContext.request.contextPath}/controller?command=sign_up_page">Sign up</a>
+                    </div>
+                </div>
             </form>
         </section>
     </section>
