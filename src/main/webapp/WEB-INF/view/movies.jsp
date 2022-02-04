@@ -48,20 +48,24 @@
                         </div>
                     </c:forEach>
                 </div>
-                <table border="1" cellpadding="5" cellspacing="5">
-                    <tr>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
                         <c:forEach begin="1" end="${numberOfPages}" var="i">
                             <c:choose>
                                 <c:when test="${currentPage eq i}">
-                                    <td>${i}</td>
+                                    <li class="page-item disabled"><a class="page-link"
+                                                                      href="controller?command=show_movies&page=${i}">${i}</a>
+                                    </li>
                                 </c:when>
                                 <c:otherwise>
-                                    <td><a href="controller?command=show_movies&page=${i}">${i}</a></td>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="controller?command=show_movies&page=${i}">${i}</a>
+                                    </li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
-                    </tr>
-                </table>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
