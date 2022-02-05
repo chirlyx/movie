@@ -24,7 +24,7 @@
                     <c:forEach var="user" items="${requestScope.users}">
                         <div class="list-group-item py-3 my-2">
                             <h5 class="mb-1">
-                                <a href="${pageContext.request.contextPath}/controller?command=edit_user&user=${user.id}">${user.firstName} ${user.lastName}</a>
+                                <a href="${pageContext.request.contextPath}/controller?command=edit_user&user=${user.id}">${user.firstName} ${user.lastName})</a>
                             </h5>
                             <hr>
                             <p class="mb-1">Current status: ${user.status}</p>

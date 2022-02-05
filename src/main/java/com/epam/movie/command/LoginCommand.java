@@ -3,6 +3,7 @@ package com.epam.movie.command;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Account;
 import com.epam.movie.model.Role;
+import com.epam.movie.model.Status;
 import com.epam.movie.service.AccountService;
 import com.epam.movie.service.UserService;
 
@@ -35,11 +36,23 @@ public class LoginCommand implements Command {
             session.setAttribute("login", login);
             session.setAttribute("role", role);
 
-            return CommandResult.forward("WEB-INF/view/main.jsp");
+            return isUserBanned(session, account, role)
+                    ? CommandResult.forward("WEB-INF/view/banned.jsp")
+                    : CommandResult.forward("WEB-INF/view/main.jsp");
         } else {
             request.setAttribute("errorLogin", "Incorrect password or login");
             return CommandResult.forward("index.jsp");
         }
     }
 
+    private boolean isUserBanned(HttpSession session, Account account, Role role) throws ServiceException {
+        if (role == Role.USER) {
+            Integer id = account.getId();
+            Status status = userService.retrieveById(id).getStatus();
+            session.setAttribute("status", status);
+            return status == Status.BANNED;
+        } else {
+            return false;
+        }
+    }
 }
