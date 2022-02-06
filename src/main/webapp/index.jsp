@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/signup.css"/>
+    <script>
+        history.pushState(null, null, null);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, null);
+        });
+    </script>
 </head>
 <body>
 <section class="container-fluid">
