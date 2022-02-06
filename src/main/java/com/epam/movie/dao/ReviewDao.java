@@ -8,10 +8,11 @@ import com.epam.movie.model.Review;
 import java.util.List;
 import java.util.Optional;
 
-public class ReviewDao extends AbstractDao<Review> implements EntityDao<Review>{
+public class ReviewDao extends AbstractDao<Review> implements EntityDao<Review> {
     private static final String CREATE = "INSERT INTO review (user_id, movie_id, mark, comment) \n" +
             "VALUES (?, ?, ?, ?)";
     private static final String RETRIEVE_BY_USER_AND_MOVIE = "SELECT * FROM review WHERE user_id = ? AND movie_id = ?";
+    private static final String RETRIEVE_BY_USER = "SELECT * FROM review WHERE user_id = ?";
     private static final String RETRIEVE_BY_ID = "SELECT * FROM review WHERE id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM review WHERE id = ?";
 
@@ -32,6 +33,10 @@ public class ReviewDao extends AbstractDao<Review> implements EntityDao<Review>{
 
     public Optional<Review> retrieveByUserAndMovie(Integer userId, Integer movieId) throws DaoException {
         return executeForSingleResult(RETRIEVE_BY_USER_AND_MOVIE, new ReviewMapper(), userId, movieId);
+    }
+
+    public List<Review> retrieveByUser(Integer userId) throws DaoException {
+        return executeQuery(RETRIEVE_BY_USER, new ReviewMapper(), userId);
     }
 
     @Override

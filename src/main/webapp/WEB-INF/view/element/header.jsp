@@ -7,6 +7,7 @@
 <fmt:message bundle="${loc}" key="label.movies" var="movies"/>
 <fmt:message bundle="${loc}" key="label.users" var="users"/>
 <fmt:message bundle="${loc}" key="label.logout" var="logout"/>
+<fmt:message bundle="${loc}" key="label.profile" var="profile"/>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/change-language.js"></script>
 
@@ -22,7 +23,8 @@
             </li>
             <c:if test="${sessionScope.account.isUser()}">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Profile</a>
+                    <a class="nav-link text-light"
+                       href="${pageContext.request.contextPath}/controller?command=profile">${profile}</a>
                 </li>
             </c:if>
             <c:if test="${sessionScope.account.isAdmin()}">
@@ -36,7 +38,7 @@
             <li class="nav-item"><a class="nav-link" onclick="changeLanguageTo('ru_RU')" href="#">RU</a></li>
             <li class="nav-item"><a class="nav-link" onclick="changeLanguageTo('en_US')" href="#">EN</a></li>
             <li class="nav-item ml-3"><a class="nav-link text-light"
-                                    href="${pageContext.request.contextPath}/controller?command=logout">${logout}</a>
+                                         href="${pageContext.request.contextPath}/controller?command=logout">${logout}</a>
             </li>
         </ul>
     </div>

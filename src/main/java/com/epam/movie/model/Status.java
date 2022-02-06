@@ -6,8 +6,8 @@ import java.util.List;
 public enum Status {
     BEGINNER(1, "Beginner"),
     INTERMEDIATE(2, "Intermediate"),
-    ADVANCED(3, "3"),
-    EXPERT(4, "4"),
+    ADVANCED(3, "Advanced"),
+    EXPERT(4, "Expert"),
     BANNED(6, "BANNED");
 
     private final Integer statusId;
@@ -24,7 +24,7 @@ public enum Status {
         return AlL_STATUSES;
     }
 
-    public static Status byId (Integer id) {
+    public static Status byId(Integer id) {
         for (Status status : values()) {
             if (status.getStatusId().equals(id)) {
                 return status;

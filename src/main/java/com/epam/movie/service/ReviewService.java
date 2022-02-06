@@ -6,6 +6,9 @@ import com.epam.movie.dao.ReviewDao;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Review;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ReviewService {
     private final DaoHelperFactory daoHelperFactory;
 
@@ -35,6 +38,15 @@ public class ReviewService {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.retrieveByUserAndMovie(userId, movieId).orElse(new Review());
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<Review> retrieveByUser(Integer userId) throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
+            ReviewDao reviewDao = daoHelper.createReviewDao();
+            return reviewDao.retrieveByUser(userId);
         } catch (Exception e) {
             throw new ServiceException(e);
         }

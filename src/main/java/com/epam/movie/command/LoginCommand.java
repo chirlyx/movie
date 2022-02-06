@@ -4,6 +4,7 @@ import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Account;
 import com.epam.movie.model.Role;
 import com.epam.movie.model.Status;
+import com.epam.movie.model.User;
 import com.epam.movie.service.AccountService;
 import com.epam.movie.service.UserService;
 
@@ -48,7 +49,9 @@ public class LoginCommand implements Command {
     private boolean isUserBanned(HttpSession session, Account account, Role role) throws ServiceException {
         if (role == Role.USER) {
             Integer id = account.getId();
-            Status status = userService.retrieveById(id).getStatus();
+            User user = userService.retrieveById(id);
+            Status status = user.getStatus();
+            session.setAttribute("user", user);
             session.setAttribute("status", status);
             return status == Status.BANNED;
         } else {
