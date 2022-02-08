@@ -35,7 +35,7 @@ public class UpdateMovieCommand implements Command {
 
         movieService.update(new Movie(id, title, year, categoryId));
 
-        deletePreviousPoster(id);
+        //deletePreviousPoster(id);
         uploadNewPoster(request, id);
 
         Movie movie = movieService.retrieveById(id);
@@ -52,7 +52,7 @@ public class UpdateMovieCommand implements Command {
         try {
             for (Part part : request.getParts()) {
                 String fileName = part.getSubmittedFileName();
-                if (fileName != null) {
+                if (fileName != null && fileName != "") {
                     part.write(PATH + File.separator + id + FILE_EXTENSION);
                 }
             }
