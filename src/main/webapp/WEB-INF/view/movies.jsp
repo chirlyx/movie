@@ -5,7 +5,7 @@
     <title>Movie | Movie List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/movie-poster.css"/>
 </head>
 <body>
 
@@ -24,16 +24,20 @@
                     <div class="card bg-secondary mb-3">
                         <div class="card-body">
                             <h3><a class="nav-link text-white text-center"
-                                   href="controller?command=edit_movie&movie=new">Add a
-                                movie +</a></h3>
+                                   href="controller?command=edit_movie&movie=new">
+                                Add a movie +
+                            </a></h3>
                         </div>
                     </div>
                 </c:if>
-                <%--<img src="${pageContext.request.contextPath}/img/flower.png">--%>
+
                 <div class="list-group">
                     <c:forEach var="movie" items="${requestScope.movies}">
                         <div class="list-group-item py-3 my-2">
-                            <h5 class="mb-1">
+                            <div class="item">
+                            <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
+                        </div>
+                            <h5 class="my-1 ml-3">
                                 <c:if test="${sessionScope.account.isAdmin()}">
                                     <a href="${pageContext.request.contextPath}/controller?command=edit_movie&movie=${movie.id}">${movie.title}</a>
                                 </c:if>
