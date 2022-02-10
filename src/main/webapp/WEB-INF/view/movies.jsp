@@ -35,8 +35,8 @@
                     <c:forEach var="movie" items="${requestScope.movies}">
                         <div class="list-group-item py-3 my-2">
                             <div class="item">
-                            <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
-                        </div>
+                                <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
+                            </div>
                             <h5 class="my-1 ml-3">
                                 <c:if test="${sessionScope.account.isAdmin()}">
                                     <a href="${pageContext.request.contextPath}/controller?command=edit_movie&movie=${movie.id}">${movie.title}</a>
@@ -49,6 +49,7 @@
                             <hr>
                             <p class="mb-1">Year: ${movie.year}</p>
                             <p class="mb-1">Category: ${movie.category}</p>
+                            <p class="mb-1">Description: ${movie.description}</p>
                         </div>
                     </c:forEach>
                 </div>

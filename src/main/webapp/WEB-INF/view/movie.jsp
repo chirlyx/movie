@@ -5,10 +5,11 @@
     <title>Movie | Movie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/movie-poster.css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
 </head>
 <body>
 
@@ -20,15 +21,19 @@
             <div class="col-lg-8">
                 <div class="list-group">
                     <div class="list-group-item py-3 my-3">
-                        <h2 class="mb-1">${requestScope.movie.title}, ${requestScope.movie.year}
-                            (${requestScope.movie.id})</h2>
-                        <hr>
-                        <p class="mb-1">Category: ${requestScope.movie.category}</p>
-                        <p class="mb-1">Actors:
-                            <c:forEach var="actor" items="${requestScope.movie.actorList}">
-                                ${actor.name}
-                            </c:forEach>
-                        </p>
+                        <div>
+                            <div class="item">
+                                <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
+                            </div>
+                            <h2 class="mb-1">${requestScope.movie.title}, ${requestScope.movie.year}
+                                (${requestScope.movie.id})</h2>
+                            <hr>
+                            <p class="mb-1">Description: ${requestScope.movie.description}</p>
+                            <p class="mb-1">Category: ${requestScope.movie.category}</p>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
                         <div class="card mt-3">
                             <div class="card-header">
                                 <h5>Review</h5>

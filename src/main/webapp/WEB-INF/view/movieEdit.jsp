@@ -46,6 +46,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="createDescription">Description</label>
+                                    <textarea id="createDescription" rows="5" type="text" class="form-control" name="description"
+                                              placeholder="Describe the movie"></textarea>
+                                </div>
+                                <div class="form-group">
                                     <label for="createPoster">Movie poster</label>
                                     <input id="createPoster" type="file" class="form-control-file"
                                            name="multiPartServlet"/>
@@ -88,7 +93,11 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="updateDescription">Description</label>
+                                    <textarea id="updateDescription" rows="5" type="text" class="form-control" name="description"
+                                              placeholder="Describe the movie"></textarea>
+                                </div>
                                 <div class="form-group">
                                     <label for="updatePoster">Movie poster</label>
                                     <input id="updatePoster" type="file" class="form-control-file"

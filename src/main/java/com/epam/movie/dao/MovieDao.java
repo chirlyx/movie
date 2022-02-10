@@ -2,9 +2,7 @@ package com.epam.movie.dao;
 
 import com.epam.movie.db.ProxyConnection;
 import com.epam.movie.exception.DaoException;
-import com.epam.movie.mapper.ActorMapper;
 import com.epam.movie.mapper.MovieMapper;
-import com.epam.movie.model.Actor;
 import com.epam.movie.model.Movie;
 
 import java.util.List;
@@ -15,8 +13,8 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
     private static final String READ_ALL = "SELECT id, title, year FROM movie";
     private static final String READ_BY_ID = "SELECT * FROM movie WHERE id = ?";
     private static final String READ_BY_TITLE = "SELECT * FROM movie WHERE title = ?";
-    private static final String CREATE = "INSERT INTO movie (title, year, category_id) VALUES (?, ?, ?)";
-    private static final String UPDATE = "UPDATE movie SET title = ?, year = ?, category_id = ? WHERE (id = ?)";
+    private static final String CREATE = "INSERT INTO movie (title, year, category_id, description) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE movie SET title = ?, year = ?, category_id = ?, description = ? WHERE (id = ?)";
     private static final String DELETE = "DELETE FROM movie WHERE id = ?";
 
     protected MovieDao(ProxyConnection proxyConnection) {
@@ -33,7 +31,8 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
         String title = entity.getTitle();
         Integer year = entity.getYear();
         Integer categoryId = entity.getCategory().getCategoryId();
-        executeUpdate(CREATE, title, year, categoryId);
+        String description = entity.getDescription();
+        executeUpdate(CREATE, title, year, categoryId, description);
         return readByTitle(title).orElse(new Movie());
     }
 
@@ -57,7 +56,8 @@ public class MovieDao extends AbstractDao<Movie> implements EntityDao<Movie> {
         String title = entity.getTitle();
         Integer year = entity.getYear();
         Integer categoryId = entity.getCategory().getCategoryId();
-        executeUpdate(UPDATE, title, year, categoryId, id);
+        String description = entity.getDescription();
+        executeUpdate(UPDATE, title, year, categoryId, description, id);
         return readByTitle(title).orElse(new Movie());
     }
 

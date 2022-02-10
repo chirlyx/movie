@@ -7,21 +7,21 @@ public class Movie implements Entity {
     private String title;
     private Integer year;
     private Category category;
-    private List<Actor> actorList;
+    private String description;
 
-    public Movie(Integer id, String title, Integer year, Integer categoryId, Actor... actorList) {
+    public Movie(Integer id, String title, Integer year, Integer categoryId, String description) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.category = Category.byId(categoryId);
-        this.actorList = actorList != null && actorList.length > 0 ? Arrays.asList(actorList) : new ArrayList<>();
+        this.description = description;
     }
 
-    public Movie(String title, Integer year, Integer categoryId, Actor... actorList) {
+    public Movie(String title, Integer year, Integer categoryId, String description) {
         this.title = title;
         this.year = year;
         this.category = Category.byId(categoryId);
-        this.actorList = actorList != null && actorList.length > 0 ? Arrays.asList(actorList) : new ArrayList<>();
+        this.description = description;
     }
 
     public Movie() {
@@ -60,14 +60,13 @@ public class Movie implements Entity {
         this.category = category;
     }
 
-    public List<Actor> getActorList() {
-        return actorList;
+    public String getDescription() {
+        return description;
     }
 
-    public void setActorList(List<Actor> actorList) {
-        this.actorList = actorList;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -27,11 +27,12 @@ public class CreateMovieCommand implements Command {
         String title = request.getParameter("title");
         String requestYear = request.getParameter("year");
         String categoryName = request.getParameter("category");
+        String description = request.getParameter("description");
 
         Integer year = Integer.parseInt(requestYear);
         Integer categoryId = Category.valueOf(categoryName).getCategoryId();
 
-        Integer movieId = movieService.create(new Movie(title, year, categoryId));
+        Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
 
         saveImage(request, movieId);
 

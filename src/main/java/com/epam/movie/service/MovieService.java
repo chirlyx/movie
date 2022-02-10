@@ -1,6 +1,5 @@
 package com.epam.movie.service;
 
-import com.epam.movie.dao.ActorDao;
 import com.epam.movie.dao.DaoHelper;
 import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.MovieDao;
@@ -30,11 +29,7 @@ public class MovieService {
     public Movie retrieveById(int id) throws ServiceException {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             MovieDao movieDao = daoHelper.createMovieDao();
-            ActorDao actorDao = daoHelper.createActorDao();
             Movie movie = movieDao.readById(id).orElse(new Movie());
-            if (movieDao.readById(id).isPresent()) {
-                movie.setActorList(actorDao.read(id));
-            }
             return movie;
         } catch (Exception e) {
             throw new ServiceException(e);

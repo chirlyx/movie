@@ -28,12 +28,13 @@ public class UpdateMovieCommand implements Command {
         String title = request.getParameter("title");
         String requestYear = request.getParameter("year");
         String categoryName = request.getParameter("category");
+        String description = request.getParameter("description");
 
         Integer id = Integer.parseInt(requestId);
         Integer year = Integer.parseInt(requestYear);
         Integer categoryId = Category.valueOf(categoryName).getCategoryId();
 
-        movieService.update(new Movie(id, title, year, categoryId));
+        movieService.update(new Movie(id, title, year, categoryId, description));
 
         //deletePreviousPoster(id);
         uploadNewPoster(request, id);

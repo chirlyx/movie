@@ -13,6 +13,7 @@ public class MovieMapper implements RowMapper{
         String title = resultSet.getString("title");
         Integer year = resultSet.getInt("year");
         Integer categoryId = resultSet.getInt("category_id");
-        return new Movie(id, title, year, categoryId);
+        String description = resultSet.getString("description");
+        return new Movie(id, title, year, categoryId, description);
     }
 }
