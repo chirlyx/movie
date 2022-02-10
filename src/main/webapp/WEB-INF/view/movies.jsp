@@ -48,7 +48,7 @@
                             </h5>
                             <hr>
                             <p class="mb-1">Year: ${movie.year}</p>
-                            <p class="mb-1">Category: ${movie.category}</p>
+                            <p class="mb-1">Category: ${movie.category.name}</p>
                             <p class="mb-1">Description: ${movie.description}</p>
                         </div>
                     </c:forEach>

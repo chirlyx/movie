@@ -29,7 +29,7 @@
                                 (${requestScope.movie.id})</h2>
                             <hr>
                             <p class="mb-1">Description: ${requestScope.movie.description}</p>
-                            <p class="mb-1">Category: ${requestScope.movie.category}</p>
+                            <p class="mb-1">Category: ${requestScope.movie.category.name}</p>
                         </div>
                         <br>
                         <br>

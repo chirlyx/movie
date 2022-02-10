@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 public class CreateMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
@@ -30,7 +31,7 @@ public class CreateMovieCommand implements Command {
         String description = request.getParameter("description");
 
         Integer year = Integer.parseInt(requestYear);
-        Integer categoryId = Category.valueOf(categoryName).getCategoryId();
+        Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
 
         Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
 

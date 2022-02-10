@@ -41,7 +41,7 @@
                                     <label for="createCategory">Category</label>
                                     <select class="form-control" name="category" id="createCategory">
                                         <c:forEach var="category" items="${requestScope.categories}">
-                                            <option>${category}</option>
+                                            <option>${category.name}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -85,10 +85,10 @@
                                     <select class="form-control" name="category" id="inputCategory">
                                         <c:forEach var="category" items="${requestScope.categories}">
                                             <c:if test="${requestScope.movie.category eq category}">
-                                                <option selected>${category}</option>
+                                                <option selected>${category.name}</option>
                                             </c:if>
                                             <c:if test="${requestScope.movie.category ne category}">
-                                                <option>${category}</option>
+                                                <option>${category.name}</option>
                                             </c:if>
                                         </c:forEach>
                                     </select>
