@@ -1,10 +1,7 @@
 package com.epam.movie.command;
 
 import com.epam.movie.exception.ServiceException;
-import com.epam.movie.model.Account;
-import com.epam.movie.model.Movie;
-import com.epam.movie.model.Review;
-import com.epam.movie.model.User;
+import com.epam.movie.model.*;
 import com.epam.movie.service.MovieService;
 import com.epam.movie.service.ReviewService;
 
@@ -41,6 +38,7 @@ public class ShowUserProfilePageCommand implements Command{
 
         request.setAttribute("movies", movieList);
         request.setAttribute("count", count);
+        request.setAttribute("statuses", Status.valuesAsList());
 
         return CommandResult.forward("WEB-INF/view/profile.jsp");
     }

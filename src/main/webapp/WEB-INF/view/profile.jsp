@@ -5,7 +5,7 @@
     <title>Profile | Movie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
+    <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
@@ -28,7 +28,18 @@
                         <p class="mb-1"><b>First name:</b> ${sessionScope.user.firstName}</p>
                         <p class="mb-1"><b>Last name:</b> ${sessionScope.user.lastName}</p>
                         <p class="mb-1"><b>Login:</b> ${sessionScope.account.login}</p>
-                        <p class="mb-1"><b>Status:</b> ${sessionScope.user.status.name()}</p>
+                        <p class="mb-1"><b>Status:</b> ${sessionScope.user.status.name}</p>
+
+                        <div class="card border-info my-3" style="width: 18rem;">
+                            <div class="card-header">
+                                How status system works:
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <c:forEach var="status" items="${requestScope.statuses}">
+                                    <li class="list-group-item"><b>${status.name}</b> > ${status.bottomValue} reviews</li>
+                                </c:forEach>
+                            </ul>
+                        </div>
 
                         <div class="card mt-3">
                             <div class="card-header">

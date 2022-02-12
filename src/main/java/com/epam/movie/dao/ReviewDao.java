@@ -13,6 +13,7 @@ public class ReviewDao extends AbstractDao<Review> implements EntityDao<Review> 
             "VALUES (?, ?, ?, ?)";
     private static final String RETRIEVE_BY_USER_AND_MOVIE = "SELECT * FROM review WHERE user_id = ? AND movie_id = ?";
     private static final String RETRIEVE_BY_USER = "SELECT * FROM review WHERE user_id = ?";
+    private static final String RETRIEVE_COUNT_BY_USER = "SELECT COUNT(*) FROM review WHERE user_id = ?";
     private static final String RETRIEVE_BY_ID = "SELECT * FROM review WHERE id = ?";
     private static final String DELETE_BY_ID = "DELETE FROM review WHERE id = ?";
 
@@ -37,6 +38,10 @@ public class ReviewDao extends AbstractDao<Review> implements EntityDao<Review> 
 
     public List<Review> retrieveByUser(Integer userId) throws DaoException {
         return executeQuery(RETRIEVE_BY_USER, new ReviewMapper(), userId);
+    }
+
+    public Integer retrieveCountByUser(Integer userId) throws DaoException {
+        return retrieveNumberOfRecordsWhere(RETRIEVE_COUNT_BY_USER, userId);
     }
 
     @Override

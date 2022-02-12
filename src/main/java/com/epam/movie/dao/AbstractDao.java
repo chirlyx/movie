@@ -38,6 +38,17 @@ public abstract class AbstractDao<T extends Entity> {
             throw new DaoException(e);
         }
     }
+  public int retrieveNumberOfRecordsWhere(String query, Object... params) throws DaoException {
+        try (final PreparedStatement statement = createStatement(query, params)) {
+            final ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int num = resultSet.getInt(1);
+            return num;
+        } catch (SQLException e) {
+            LOG.error("", e.getMessage());
+            throw new DaoException(e);
+        }
+    }
 
     protected List<T> executeQuery(String query, RowMapper<T> mapper, Object... params) throws DaoException {
         try (final PreparedStatement statement = createStatement(query, params)) {
