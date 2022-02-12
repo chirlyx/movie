@@ -44,6 +44,6 @@ public class SubmitReviewCommand implements Command{
         Movie movie = movieService.retrieveById(movieId);
         request.setAttribute("movie", movie);
 
-        return CommandResult.forward("WEB-INF/view/movie.jsp");
+        return CommandResult.redirect("controller?command=single_movie_page&movie=" + movieId);
     }
 }
