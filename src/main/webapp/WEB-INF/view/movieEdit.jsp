@@ -96,7 +96,7 @@
                                 <div class="form-group">
                                     <label for="updateDescription">Description</label>
                                     <textarea id="updateDescription" rows="5" type="text" class="form-control" name="description"
-                                              placeholder="Describe the movie"></textarea>
+                                              placeholder="Describe the movie">${movie.description}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="updatePoster">Movie poster</label>
