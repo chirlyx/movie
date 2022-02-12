@@ -7,8 +7,7 @@ public enum Status {
     BEGINNER(1, "Beginner"),
     INTERMEDIATE(2, "Intermediate"),
     ADVANCED(3, "Advanced"),
-    EXPERT(4, "Expert"),
-    BANNED(6, "BANNED");
+    EXPERT(4, "Expert");
 
     private final Integer statusId;
     private final String name;
@@ -30,7 +29,7 @@ public enum Status {
                 return status;
             }
         }
-        return BANNED;
+        return BEGINNER;
     }
 
     public String getName() {

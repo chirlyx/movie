@@ -12,6 +12,7 @@ public class UserMapper implements RowMapper<User> {
         String firstName = resultSet.getString("first_name");
         String lastName = resultSet.getString("last_name");
         Integer statusId = resultSet.getInt("status_id");
-        return new User(id, firstName, lastName, statusId);
+        Integer banStatusId = resultSet.getInt("ban_status_id");
+        return new User(id, firstName, lastName, statusId, banStatusId);
     }
 }

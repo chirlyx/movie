@@ -27,7 +27,7 @@ public class SignUpCommand implements Command {
         String lastName = request.getParameter("lastName");
 
         Account account = new Account(login, password);
-        User user = new User(accountService.create(account), firstName, lastName, 1);
+        User user = new User(accountService.create(account), firstName, lastName, 1, 1);
         userService.create(user);
 
         return CommandResult.forward("index.jsp");

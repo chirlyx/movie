@@ -1,10 +1,7 @@
 package com.epam.movie.command;
 
 import com.epam.movie.exception.ServiceException;
-import com.epam.movie.model.Account;
-import com.epam.movie.model.Role;
-import com.epam.movie.model.Status;
-import com.epam.movie.model.User;
+import com.epam.movie.model.*;
 import com.epam.movie.service.AccountService;
 import com.epam.movie.service.UserService;
 
@@ -50,10 +47,10 @@ public class LoginCommand implements Command {
         if (role == Role.USER) {
             Integer id = account.getId();
             User user = userService.retrieveById(id);
-            Status status = user.getStatus();
+            BanStatus banStatus = user.getBanStatus();
             session.setAttribute("user", user);
-            session.setAttribute("status", status);
-            return status == Status.BANNED;
+            session.setAttribute("banStatus", banStatus);
+            return banStatus == BanStatus.BANNED;
         } else {
             return false;
         }

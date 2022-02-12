@@ -24,18 +24,18 @@
                     <c:forEach var="user" items="${requestScope.users}">
                         <div class="list-group-item py-3 my-2">
                             <h5 class="mb-1">
-                                <a href="${pageContext.request.contextPath}/controller?command=edit_user&user=${user.id}">${user.firstName} ${user.lastName})</a>
+                                ${user.firstName} ${user.lastName} (${user.status.name})
                             </h5>
                             <hr>
-                            <p class="mb-1">Current status: ${user.status}</p>
+                            <p class="mb-1">Current status: ${user.banStatus.name}</p>
                             <form class="form-container"
                                   action="${pageContext.request.contextPath}/controller?command=update_status&user=${user.id}"
                                   method="post">
                                 <div class="form-group">
                                     <label for="inputStatus">Change into:</label>
-                                    <select class="form-control" name="status" id="inputStatus">
-                                        <c:forEach var="status" items="${requestScope.statuses}">
-                                                <option>${status}</option>
+                                    <select class="form-control" name="banStatus" id="inputStatus">
+                                        <c:forEach var="banStatus" items="${requestScope.banStatuses}">
+                                                <option>${banStatus.name}</option>
                                         </c:forEach>
                                     </select>
                                 </div>

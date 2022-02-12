@@ -1,6 +1,7 @@
 package com.epam.movie.command;
 
 import com.epam.movie.exception.ServiceException;
+import com.epam.movie.model.BanStatus;
 import com.epam.movie.model.Status;
 import com.epam.movie.model.User;
 import com.epam.movie.service.UserService;
@@ -35,7 +36,7 @@ public class ShowUserPageCommand implements Command{
 
         request.setAttribute("users", users);
         request.setAttribute("numberOfPages", numberOfPages);
-        request.setAttribute("statuses", Status.valuesAsList());
+        request.setAttribute("banStatuses", BanStatus.valuesAsList());
 
         return CommandResult.forward("WEB-INF/view/users.jsp");
     }

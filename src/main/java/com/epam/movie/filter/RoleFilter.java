@@ -1,6 +1,7 @@
 package com.epam.movie.filter;
 
 import com.epam.movie.command.CommandRegistry;
+import com.epam.movie.model.BanStatus;
 import com.epam.movie.model.Role;
 import com.epam.movie.model.Status;
 
@@ -31,7 +32,7 @@ public class RoleFilter implements Filter {
 
     private static final String LOGIN_ATTRIBUTE = "login";
     private static final String ROLE_ATTRIBUTE = "role";
-    private static final String STATUS_ATTRIBUTE = "status";
+    private static final String BAN_STATUS_ATTRIBUTE = "banStatus";
     private static final String COMMAND_PARAMETER = "command";
     private static final String SIGN_UP_PAGE_COMMAND = "sign_up_page";
     private static final String SIGN_UP_COMMAND = "sign_up";
@@ -66,8 +67,8 @@ public class RoleFilter implements Filter {
             }
         } else {
             if (currentRole == Role.USER) {
-                Status currentStatus = (Status) session.getAttribute(STATUS_ATTRIBUTE);
-                if (currentStatus == Status.BANNED) {
+                BanStatus currentBanStatus = (BanStatus) session.getAttribute(BAN_STATUS_ATTRIBUTE);
+                if (currentBanStatus == BanStatus.BANNED) {
                     RequestDispatcher dispatcher = servletRequest.getRequestDispatcher(BANNED_JSP);
                     dispatcher.forward(servletRequest, servletResponse);
                 }

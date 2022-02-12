@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 public class UpdateMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
@@ -32,7 +33,7 @@ public class UpdateMovieCommand implements Command {
 
         Integer id = Integer.parseInt(requestId);
         Integer year = Integer.parseInt(requestYear);
-        Integer categoryId = Category.valueOf(categoryName).getCategoryId();
+        Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
 
         movieService.update(new Movie(id, title, year, categoryId, description));
 
