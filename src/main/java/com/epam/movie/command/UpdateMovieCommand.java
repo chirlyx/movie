@@ -35,7 +35,7 @@ public class UpdateMovieCommand implements Command {
         Integer year = Integer.parseInt(requestYear);
         Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
 
-        movieService.update(new Movie(id, title, year, categoryId, description));
+        movieService.update(new Movie(id, title, year, categoryId, description, false));
 
         //deletePreviousPoster(id);
         uploadNewPoster(request, id);

@@ -8,13 +8,15 @@ public class Movie implements Entity {
     private Integer year;
     private Category category;
     private String description;
+    private Boolean deleted;
 
-    public Movie(Integer id, String title, Integer year, Integer categoryId, String description) {
+    public Movie(Integer id, String title, Integer year, Integer categoryId, String description, Boolean deleted) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.category = Category.byId(categoryId);
         this.description = description;
+        this.deleted = deleted;
     }
 
     public Movie(String title, Integer year, Integer categoryId, String description) {
@@ -22,6 +24,7 @@ public class Movie implements Entity {
         this.year = year;
         this.category = Category.byId(categoryId);
         this.description = description;
+        this.deleted = deleted;
     }
 
     public Movie() {
@@ -67,6 +70,15 @@ public class Movie implements Entity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

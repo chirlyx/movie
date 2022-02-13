@@ -14,6 +14,7 @@ public class MovieMapper implements RowMapper{
         Integer year = resultSet.getInt("year");
         Integer categoryId = resultSet.getInt("category_id");
         String description = resultSet.getString("description");
-        return new Movie(id, title, year, categoryId, description);
+        Boolean deleted = resultSet.getBoolean("deleted");
+        return new Movie(id, title, year, categoryId, description, deleted);
     }
 }

@@ -10,6 +10,7 @@ public enum CommandRegistry {
     LOGIN("login", Role.ADMIN, Role.USER),
     LOGOUT("logout",Role.ADMIN, Role.USER),
     SHOW_MOVIES_PAGE("show_movies", Role.ADMIN, Role.USER),
+    SHOW_DELETED_MOVIES_PAGE("show_deleted_movies", Role.ADMIN),
     SHOW_USERS_PAGE("show_users", Role.ADMIN),
     SHOW_EDIT_MOVIE_PAGE("edit_movie", Role.ADMIN),
     SIGN_UP("sign_up", Role.ADMIN, Role.USER),
@@ -21,6 +22,7 @@ public enum CommandRegistry {
     CREATE_MOVIE("create_movie", Role.ADMIN),
     DELETE_MOVIE("delete_movie", Role.ADMIN),
     UPDATE_MOVIE("update_movie", Role.ADMIN),
+    RESTORE_MOVIE("restore_movie", Role.ADMIN),
     UPDATE_STATUS("update_status", Role.ADMIN);
 
     private final String path;

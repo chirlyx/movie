@@ -21,6 +21,8 @@ public class CommandFactory {
                 return new LogoutCommand();
             case "show_movies":
                 return new ShowMoviePageCommand(movieService);
+            case "show_deleted_movies":
+                return new ShowDeletedMoviePageCommand(movieService);
             case "show_users":
                 return new ShowUserPageCommand(userService);
             case "main_page":
@@ -41,6 +43,8 @@ public class CommandFactory {
                 return new ShowEditMoviePageCommand(movieService);
             case "delete_movie":
                 return new DeleteMovieCommand(movieService);
+            case "restore_movie":
+                return new RestoreMovieCommand(movieService);
             case "update_movie":
                 return new UpdateMovieCommand(movieService);
             case "create_movie":

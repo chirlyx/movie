@@ -12,6 +12,8 @@ public class MovieService {
     private DaoHelperFactory daoHelperFactory;
 
     private static final String TABLE_NAME = "movie";
+    private static final String RETRIEVE_ACTIVE_MOVIES_COUNT = "SELECT COUNT(*) FROM movie WHERE (deleted = 0)";
+    private static final String RETRIEVE_DELETED_MOVIES_COUNT = "SELECT COUNT(*) FROM movie WHERE (deleted = 1)";
 
     public MovieService(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -36,10 +38,19 @@ public class MovieService {
         }
     }
 
-    public List<Movie> retrieveFromTo(int offset, int limit) throws ServiceException {
+    public List<Movie> retrieveActiveFromTo(int offset, int limit) throws ServiceException {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             MovieDao movieDao = daoHelper.createMovieDao();
-            return movieDao.readWithLimit(offset, limit);
+            return movieDao.readActiveWithLimit(offset, limit);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<Movie> retrieveDeletedFromTo(int offset, int limit) throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
+            MovieDao movieDao = daoHelper.createMovieDao();
+            return movieDao.readDeletedWithLimit(offset, limit);
         } catch (Exception e) {
             throw new ServiceException(e);
         }
@@ -63,10 +74,28 @@ public class MovieService {
         }
     }
 
-    public Integer numberOfRecords() throws ServiceException {
+    public boolean restore(Integer id) throws ServiceException {
         try (DaoHelper daoHelper = daoHelperFactory.create()) {
             MovieDao movieDao = daoHelper.createMovieDao();
-            return movieDao.retrieveNumberOfRecords(TABLE_NAME);
+            return movieDao.restore(id);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public Integer numberOfActiveMovies() throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
+            MovieDao movieDao = daoHelper.createMovieDao();
+            return movieDao.retrieveNumberOfRecordsWhere(RETRIEVE_ACTIVE_MOVIES_COUNT);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public Integer numberOfDeletedMovies() throws ServiceException {
+        try (DaoHelper daoHelper = daoHelperFactory.create()) {
+            MovieDao movieDao = daoHelper.createMovieDao();
+            return movieDao.retrieveNumberOfRecordsWhere(RETRIEVE_DELETED_MOVIES_COUNT);
         } catch (Exception e) {
             throw new ServiceException(e);
         }
