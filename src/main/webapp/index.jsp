@@ -83,6 +83,7 @@
                 </div>
 
                 <c:if test="${requestScope.errorLogin != null}">
+                    <br>
                     ${requestScope.errorLogin}
                     <br>
                 </c:if>

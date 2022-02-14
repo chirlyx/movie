@@ -41,9 +41,10 @@
                             <c:if test="${!requestScope.isReview}">
                                 <div class="card-body">
                                     <h6 class="card-title">Rate the movie and leave a comment here:</h6>
-                                    <form name="review-form" class="form-container"
+                                    <form name="review-form" class="form-container needs-validatio"
                                           action="${pageContext.request.contextPath}/controller?command=submit_review&movie=${requestScope.movie.id}"
-                                          method="post">
+                                          method="post"
+                                          novalidate>
                                         <div class="form-group row">
                                             <label for="movieName" class="col-sm-2 col-form-label">Movie</label>
                                             <div class="col-sm-10">
@@ -68,7 +69,7 @@
                                             <label for="comment" class="col-sm-2 col-form-label">Comment:</label>
                                             <div class="col-sm-10">
                                                 <textarea class="form-control" name="comment" id="comment"
-                                                          rows="3"></textarea>
+                                                          rows="3" required></textarea>
                                             </div>
                                         </div>
                                         <p class="card-text">With supporting text below as a natural lead-in to
