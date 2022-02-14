@@ -39,6 +39,8 @@ public class CommandFactory {
                 return new SubmitReviewCommand(reviewService, movieService, userService);
             case "delete_review":
                 return new DeleteReviewCommand(reviewService, movieService, userService);
+            case "delete_review_from_profile":
+                return new DeleteReviewFromProfileCommand(reviewService, userService);
             case "edit_movie":
                 return new ShowEditMoviePageCommand(movieService);
             case "delete_movie":

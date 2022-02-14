@@ -19,6 +19,7 @@ public enum CommandRegistry {
     SHOW_USER_PROFILE_PAGE("profile", Role.USER),
     SUBMIT_REVIEW("submit_review", Role.ADMIN, Role.USER),
     DELETE_REVIEW("delete_review", Role.ADMIN, Role.USER),
+    DELETE_REVIEW_FROM_PROFILE("delete_review_from_profile", Role.USER),
     CREATE_MOVIE("create_movie", Role.ADMIN),
     DELETE_MOVIE("delete_movie", Role.ADMIN),
     UPDATE_MOVIE("update_movie", Role.ADMIN),
