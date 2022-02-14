@@ -10,3 +10,13 @@ img {
     margin: 3px;
     padding: 3px;
 }
+
+.list-group hr {
+    margin-left: 187px;
+}
+
+.restore-btn {
+    position: absolute;
+    right: 19px;
+    top: 12px;
+}

@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/main.css"/>
+
 </head>
 <body>
 <jsp:include page="element/header.jsp"/>
 
-<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #b6c0d5">
-    <div class="w-50 col-md-5 p-lg-5 mx-auto my-5">
+<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="gradient">
+    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="alt" class="main-image">
+
+    <div class="w-50 col-md-5 p-lg-5 my-5" id="main-text">
         <h1 class="display-4 font-weight-normal">${pageTitle}</h1>
         <h2>It's already <ct:time/> o'clock, high time you watched some movies!</h2>
         <p class="lead font-weight-normal">

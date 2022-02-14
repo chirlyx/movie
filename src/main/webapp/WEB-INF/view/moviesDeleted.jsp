@@ -36,7 +36,7 @@
                             <p class="mb-1">Year: ${movie.year}</p>
                             <p class="mb-1">Category: ${movie.category.name}</p>
                             <p class="mb-1">Description: ${movie.description}</p>
-                            <a class="btn btn-outline-primary mb-1 justify-content-end" href="controller?command=restore_movie&movie=${movie.id}" role="button">Restore</a>
+                            <a class="btn btn-outline-primary mb-1 justify-content-end restore-btn" href="controller?command=restore_movie&movie=${movie.id}" role="button">Restore</a>
 
                         </div>
                     </c:forEach>

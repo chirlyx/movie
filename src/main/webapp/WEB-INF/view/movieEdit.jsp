@@ -69,8 +69,7 @@
                                     <textarea id="createDescription" rows="5" type="text" class="form-control"
                                               name="description"
                                               placeholder="Describe the movie"
-                                              required>
-                                    </textarea>
+                                              required></textarea>
                                         <%--<div class="invalid-feedback">
                                             Description should be between 10 and 500 000 symbols
                                         </div>--%>
