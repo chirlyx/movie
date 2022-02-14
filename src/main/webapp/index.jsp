@@ -59,12 +59,12 @@
                     <div class="col-md-12 mb-3">
                         <label for="login-input">Login:</label>
                         <input id="login-input" type="text" name="login" class="form-control"
-                               pattern=".{4,}"
+                               pattern="^[a-zA-Z0-9]{4,25}$"
                                title="4 or more characters"
                                placeholder="Login" required>
                         <div class="valid-feedback">Input format is correct</div>
                         <div class="invalid-feedback">
-                            Please, make sure the login is more than 4 symbols long.
+                            Please notice that the login can contain only latin letters and numbers and should be between 4 and 25 symbols long.
                         </div>
                     </div>
                 </div>
@@ -72,12 +72,12 @@
                     <div class="col-md-12 mb-3">
                         <label for="password-input">Password:</label>
                         <input id="password-input" type="password" name="password" class="form-control"
-                               pattern=".{8,}"
+                               pattern="^[a-zA-Z0-9]{8,50}$"
                                title="8 or more characters"
                                placeholder="Password" required>
                         <div class="valid-feedback">Input format is correct</div>
                         <div class="invalid-feedback">
-                            Please make sure the password is more than 8 symbols long.
+                            Please notice that the password can contain only latin letters and numbers and should be between 8 and 50 symbols long.
                         </div>
                     </div>
                 </div>
