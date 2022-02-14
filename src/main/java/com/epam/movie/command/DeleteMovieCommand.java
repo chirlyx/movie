@@ -24,7 +24,7 @@ public class DeleteMovieCommand implements Command {
 
         movieService.delete(id);
 
-        deletePoster(id);
+        //deletePoster(id);
 
         return CommandResult.redirect("controller?command=show_movies&page=1");
     }
