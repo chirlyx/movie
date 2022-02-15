@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Movie | Sign Up</title>
@@ -62,6 +63,11 @@
                         Please notice that the field can contain only latin letters and should be between 2 and 35 symbols long.
                     </div>
                 </div>
+                <c:if test="${requestScope.errorLogin != null}">
+                    <br>
+                    ${requestScope.errorLogin}
+                    <br>
+                </c:if>
                 <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
         </section>

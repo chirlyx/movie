@@ -48,7 +48,7 @@ public class LoginCommand implements Command {
                 return CommandResult.forward("index.jsp");
             }
         }
-        request.setAttribute("errorLogin", "Incorrect password or login");
+        request.setAttribute("errorLogin", "Incorrect data format");
         return CommandResult.forward("index.jsp");
     }
 
