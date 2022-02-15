@@ -91,7 +91,11 @@
                                                name="multiPartServlet"
                                                required/>
                                     </div>--%>
-
+                                <c:if test="${requestScope.errorInput != null}">
+                                    <br>
+                                    ${requestScope.errorInput}
+                                    <br>
+                                </c:if>
                                 <button type="submit" class="btn btn-primary mt-1">Submit</button>
                             </form>
                         </c:if>
@@ -158,6 +162,11 @@
                                     </div>
                                 </div>
 
+                                <c:if test="${requestScope.errorInput != null}">
+                                    <br>
+                                    ${requestScope.errorInput}
+                                    <br>
+                                </c:if>
                                 <button type="submit" class="btn btn-primary">Update</button>
 
                                 <a href="${pageContext.request.contextPath}/controller?command=delete_movie&movie=${movie.id}">Delete</a>

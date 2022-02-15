@@ -41,7 +41,7 @@
                             <c:if test="${!requestScope.isReview}">
                                 <div class="card-body">
                                     <h6 class="card-title">Rate the movie and leave a comment here:</h6>
-                                    <form name="review-form" class="form-container needs-validatio"
+                                    <form name="review-form" class="form-container needs-validation"
                                           action="${pageContext.request.contextPath}/controller?command=submit_review&movie=${requestScope.movie.id}"
                                           method="post"
                                           novalidate>
@@ -74,6 +74,11 @@
                                         </div>
                                         <p class="card-text">With supporting text below as a natural lead-in to
                                             additional content.</p>
+                                        <c:if test="${requestScope.errorInput != null}">
+                                            <br>
+                                            ${requestScope.errorInput}
+                                            <br>
+                                        </c:if>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>

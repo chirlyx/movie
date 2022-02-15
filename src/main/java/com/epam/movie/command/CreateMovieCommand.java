@@ -4,6 +4,9 @@ import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Category;
 import com.epam.movie.model.Movie;
 import com.epam.movie.service.MovieService;
+import com.epam.movie.validation.Validator;
+import com.epam.movie.validation.ValidatorFactory;
+import com.epam.movie.validation.ValidatorRegistry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,8 @@ import java.util.Locale;
 public class CreateMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
     private static final String FILE_EXTENSION = ".jpg";
+
+    private final ValidatorFactory validatorFactory = new ValidatorFactory();
 
     private final MovieService movieService;
 
@@ -30,14 +35,34 @@ public class CreateMovieCommand implements Command {
         String categoryName = request.getParameter("category");
         String description = request.getParameter("description");
 
-        Integer year = Integer.parseInt(requestYear);
-        Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
+        if (validateTitle(title) && validateYear(requestYear) && validateDescription(description)) {
+            Integer year = Integer.parseInt(requestYear);
+            Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
 
-        Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
+            Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
 
-        saveImage(request, movieId);
+            saveImage(request, movieId);
 
-        return CommandResult.redirect("controller?command=show_movies&page=1");
+            return CommandResult.redirect("controller?command=show_movies&page=1");
+        } else {
+            request.setAttribute("errorInput", "Incorrect data format, try again");
+            return CommandResult.redirect("controller?command=edit_movie&movie=new");
+        }
+    }
+
+    private boolean validateTitle(String title) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.TITLE, title);
+        return validator.isValid(title, ValidatorRegistry.TITLE);
+    }
+
+    private boolean validateYear(String year) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.YEAR, year);
+        return validator.isValid(year, ValidatorRegistry.YEAR);
+    }
+
+    private boolean validateDescription(String description) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.DESCRIPTION, description);
+        return validator.isValid(description, ValidatorRegistry.DESCRIPTION);
     }
 
     private void saveImage(HttpServletRequest request, Integer movieId) {

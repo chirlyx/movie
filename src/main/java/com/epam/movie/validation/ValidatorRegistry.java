@@ -8,6 +8,7 @@ public enum ValidatorRegistry {
     YEAR("^[0-9]{4,4}$"),
     DESCRIPTION("^[a-zA-Z0-9 .,]{4,500000}$"),
     COMMENT("^[a-zA-Z0-9 .,]{4,500000}$"),
+    ID("^[0-9]$"),
     DEFAULT("^[a-zA-Z0-9 .,]");
 
     private final String regex;
