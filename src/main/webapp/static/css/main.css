@@ -26,10 +26,16 @@ img {
     justify-content: space-between;
 }
 
-#gradient {
+.gradient-right {
     background: linear-gradient(to right, transparent, black);
     display: flex;
     justify-content: end;
+}
+
+.gradient-left {
+    background: linear-gradient(to left, transparent, black);
+    display: flex;
+    justify-content: start;
 }
 
 .main-image {
@@ -41,6 +47,6 @@ img {
     z-index: -1;
 }
 
-#main-text {
+.main-text {
     color: white;
 }

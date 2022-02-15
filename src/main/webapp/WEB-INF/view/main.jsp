@@ -16,10 +16,11 @@
 <body>
 <jsp:include page="element/header.jsp"/>
 
-<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="gradient">
+<div class=" height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center gradient-right">
+
     <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="alt" class="main-image">
 
-    <div class="w-50 col-md-5 p-lg-5 my-5" id="main-text">
+    <div class="w-50 col-md-5 p-lg-5 my-5 main-text">
         <h1 class="display-4 font-weight-normal">${pageTitle}</h1>
         <h2>It's already <ct:time/> o'clock, high time you watched some movies!</h2>
         <p class="lead font-weight-normal">
@@ -29,16 +30,37 @@
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" >
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Punny headline</h1>
-        <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+<div class="height position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center gradient-left" >
+
+    <img src="https://images.unsplash.com/photo-1485095329183-d0797cdc5676?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="alt" class="main-image">
+
+    <div class="col-md-5 p-lg-5 my-5 main-text" >
+        <h1 class="display-4 font-weight-normal">Technologies used:</h1>
+        <p class="lead font-weight-normal text-white">
+            Java 8, Java EE (Java Servlets, JSP, JSTL), JDBC, Slf4j&Logback, Apache Tomcat 9, MySQL
+        </p>
         <a class="btn btn-outline-secondary" href="#">Coming soon</a>
     </div>
 </div>
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-color: #dee3ed">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center gradient-right">
+
+    <img src="https://images.unsplash.com/photo-1485095329183-d0797cdc5676?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="alt" class="main-image">
+
+    <div class="col-md-5 p-lg-5 my-5 main-text">
+        <h1 class="display-4 font-weight-normal">Punny headline</h1>
+        <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
+        <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    </div>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center gradient-left">
+
+    <img src="https://images.unsplash.com/photo-1485095329183-d0797cdc5676?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="alt" class="main-image">
+
+    <div class="col-md-5 p-lg-5 my-5 main-text">
         <h1 class="display-4 font-weight-normal">Punny headline</h1>
         <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
         <a class="btn btn-outline-secondary" href="#">Coming soon</a>
