@@ -4,12 +4,17 @@ import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.*;
 import com.epam.movie.service.AccountService;
 import com.epam.movie.service.UserService;
+import com.epam.movie.validation.Validator;
+import com.epam.movie.validation.ValidatorFactory;
+import com.epam.movie.validation.ValidatorRegistry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginCommand implements Command {
+
+    private final ValidatorFactory validatorFactory = new ValidatorFactory();
 
     private final UserService userService;
     private final AccountService accountService;
@@ -26,21 +31,35 @@ public class LoginCommand implements Command {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        if (accountService.checkLoginAndPassword(login, password)) {
-            Account account = accountService.retrieveByLogin(login);
-            Role role = account.getRole();
+        if (validateLogin(login) && validatePassword(password)) {
+            if (accountService.checkLoginAndPassword(login, password)) {
+                Account account = accountService.retrieveByLogin(login);
+                Role role = account.getRole();
 
-            session.setAttribute("account", account);
-            session.setAttribute("login", login);
-            session.setAttribute("role", role);
+                session.setAttribute("account", account);
+                session.setAttribute("login", login);
+                session.setAttribute("role", role);
 
-            return isUserBanned(session, account, role)
-                    ? CommandResult.forward("WEB-INF/view/banned.jsp")
-                    : CommandResult.forward("WEB-INF/view/main.jsp");
-        } else {
-            request.setAttribute("errorLogin", "Incorrect password or login");
-            return CommandResult.forward("index.jsp");
+                return isUserBanned(session, account, role)
+                        ? CommandResult.forward("WEB-INF/view/banned.jsp")
+                        : CommandResult.forward("WEB-INF/view/main.jsp");
+            } else {
+                request.setAttribute("errorLogin", "Incorrect password or login");
+                return CommandResult.forward("index.jsp");
+            }
         }
+        request.setAttribute("errorLogin", "Incorrect password or login");
+        return CommandResult.forward("index.jsp");
+    }
+
+    private boolean validateLogin(String login) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.LOGIN, login);
+        return validator.isValid(login, ValidatorRegistry.LOGIN);
+    }
+
+    private boolean validatePassword(String password) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.PASSWORD, password);
+        return validator.isValid(password, ValidatorRegistry.PASSWORD);
     }
 
     private boolean isUserBanned(HttpSession session, Account account, Role role) throws ServiceException {

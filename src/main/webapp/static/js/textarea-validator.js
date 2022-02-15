@@ -3,7 +3,7 @@
     window.addEventListener('load', () => {
         var forms = document.getElementsByClassName('needs-validation');
         var textarea = document.getElementById('createDescription');
-        var regexp = /^[a-zA-Z0-9 .,]{4,35}$/;
+        var regexp = /^[a-zA-Z0-9 .,]{4,500000}$/;
         textarea.addEventListener('change', (e) => {
             const str = e.target.value;
             if (!regexp.test(str)) {
