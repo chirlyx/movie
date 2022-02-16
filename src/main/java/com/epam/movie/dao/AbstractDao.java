@@ -4,8 +4,8 @@ import com.epam.movie.db.ProxyConnection;
 import com.epam.movie.exception.DaoException;
 import com.epam.movie.mapper.RowMapper;
 import com.epam.movie.model.Entity;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractDao<T extends Entity> {
-    private static final Logger LOG = LogManager.getLogger(AbstractDao.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractDao.class);
 
     private final ProxyConnection proxyConnection;
 
@@ -93,7 +93,6 @@ public abstract class AbstractDao<T extends Entity> {
         for (int i = 0; i < params.length; i++) {
             statement.setObject((i + 1), params[i]);
         }
-        LOG.debug(statement);
         return statement;
     }
 }

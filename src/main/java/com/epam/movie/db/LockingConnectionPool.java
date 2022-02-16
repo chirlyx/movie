@@ -1,7 +1,7 @@
 package com.epam.movie.db;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public enum LockingConnectionPool implements ConnectionPool {
     INSTANCE;
 
-    private static final Logger LOG = LogManager.getLogger(LockingConnectionPool.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LockingConnectionPool.class);
 
     private static final int INITIAL_CONNECTIONS_AMOUNT = 8;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/movie_rating_db";
