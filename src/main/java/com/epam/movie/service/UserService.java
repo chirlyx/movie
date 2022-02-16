@@ -5,10 +5,14 @@ import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.UserDao;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class UserService {
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+
     private DaoHelperFactory daoHelperFactory;
 
     private static final String TABLE_NAME = "user_account";
@@ -22,6 +26,7 @@ public class UserService {
             UserDao userDao = daoHelper.createUserDao();
             return userDao.readById(id).orElse(new User());
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -31,6 +36,7 @@ public class UserService {
             UserDao userDao = daoHelper.createUserDao();
             return userDao.readWithLimit(offset, limit);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -40,6 +46,7 @@ public class UserService {
             UserDao userDao = daoHelper.createUserDao();
             return userDao.update(user);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -49,6 +56,7 @@ public class UserService {
             UserDao userDao = daoHelper.createUserDao();
             userDao.create(user);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -58,6 +66,7 @@ public class UserService {
             UserDao userDao = daoHelper.createUserDao();
             return userDao.retrieveNumberOfRecords(TABLE_NAME);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }

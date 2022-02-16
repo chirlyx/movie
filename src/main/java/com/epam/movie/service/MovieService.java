@@ -5,10 +5,14 @@ import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.MovieDao;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Movie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class MovieService {
+    private static final Logger LOG = LoggerFactory.getLogger(MovieService.class);
+
     private DaoHelperFactory daoHelperFactory;
 
     private static final String TABLE_NAME = "movie";
@@ -24,6 +28,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.create(movie).getId();
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -34,6 +39,7 @@ public class MovieService {
             Movie movie = movieDao.readById(id).orElse(new Movie());
             return movie;
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -43,6 +49,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.readActiveWithLimit(offset, limit);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -52,6 +59,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.readDeletedWithLimit(offset, limit);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -61,6 +69,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.update(movie);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -70,6 +79,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.delete(id);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -79,6 +89,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.restore(id);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -88,6 +99,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.retrieveNumberOfRecordsWhere(RETRIEVE_ACTIVE_MOVIES_COUNT);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -97,6 +109,7 @@ public class MovieService {
             MovieDao movieDao = daoHelper.createMovieDao();
             return movieDao.retrieveNumberOfRecordsWhere(RETRIEVE_DELETED_MOVIES_COUNT);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }

@@ -7,6 +7,8 @@ import com.epam.movie.service.MovieService;
 import com.epam.movie.validation.Validator;
 import com.epam.movie.validation.ValidatorFactory;
 import com.epam.movie.validation.ValidatorRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,8 @@ import java.util.Locale;
 public class UpdateMovieCommand implements Command {
     private static final String DIRECTORY = "http://localhost:8000/Users/User/Documents/0/%D0%B6%D0%B0%D0%B1%D0%B0/movie/target/movie-1.0-SNAPSHOT/data";
     private static final String FILE_EXTENSION = ".jpg";
+
+    private static final Logger LOG = LoggerFactory.getLogger(UpdateMovieCommand.class);
 
     private final ValidatorFactory validatorFactory = new ValidatorFactory();
 
@@ -89,10 +93,8 @@ public class UpdateMovieCommand implements Command {
                     part.write(DIRECTORY + File.separator + id + FILE_EXTENSION);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
+        } catch (IOException | ServletException e) {
+            LOG.debug(e.getMessage(), e);
         }
     }
 
@@ -101,7 +103,7 @@ public class UpdateMovieCommand implements Command {
             File moviePoster = new File(DIRECTORY + File.separator + id + FILE_EXTENSION);
             moviePoster.delete();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.trace(e.getMessage());
         }
     }
 }

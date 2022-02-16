@@ -5,10 +5,14 @@ import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.dao.ReviewDao;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Review;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class ReviewService {
+    private static final Logger LOG = LoggerFactory.getLogger(ReviewService.class);
+
     private final DaoHelperFactory daoHelperFactory;
 
     public ReviewService(DaoHelperFactory daoHelperFactory) {
@@ -20,6 +24,7 @@ public class ReviewService {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.create(review);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -29,6 +34,7 @@ public class ReviewService {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.retrieveByUserAndMovie(userId, movieId).isPresent();
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -38,6 +44,7 @@ public class ReviewService {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.retrieveByUserAndMovie(userId, movieId).orElse(new Review());
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -47,6 +54,7 @@ public class ReviewService {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.retrieveByUser(userId);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -56,6 +64,7 @@ public class ReviewService {
             ReviewDao reviewDao = daoHelper.createReviewDao();
             return reviewDao.retrieveCountByUser(userId);
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -66,6 +75,7 @@ public class ReviewService {
             Review review = retrieveByUserAndMovieId(userId, movieId);
             return reviewDao.delete(review.getId());
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }

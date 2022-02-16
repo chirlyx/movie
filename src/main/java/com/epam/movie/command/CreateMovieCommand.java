@@ -7,6 +7,8 @@ import com.epam.movie.service.MovieService;
 import com.epam.movie.validation.Validator;
 import com.epam.movie.validation.ValidatorFactory;
 import com.epam.movie.validation.ValidatorRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,8 @@ public class CreateMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
     private static final String DIRECTORY = "data";
     private static final String FILE_EXTENSION = ".jpg";
+
+    private static final Logger LOG = LoggerFactory.getLogger(CreateMovieCommand.class);
 
     private final ValidatorFactory validatorFactory = new ValidatorFactory();
 
@@ -80,7 +84,7 @@ public class CreateMovieCommand implements Command {
                 }
             }
         } catch (IOException | ServletException e) {
-            e.printStackTrace();
+            LOG.debug(e.getMessage(), e);
         }
     }
 }

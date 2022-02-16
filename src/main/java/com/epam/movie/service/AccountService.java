@@ -6,8 +6,12 @@ import com.epam.movie.dao.DaoHelperFactory;
 import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Account;
 import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AccountService {
+    private static final Logger LOG = LoggerFactory.getLogger(AccountService.class);
+
     private DaoHelperFactory daoHelperFactory;
 
     public AccountService(DaoHelperFactory daoHelperFactory) {
@@ -20,6 +24,7 @@ public class AccountService {
             account.setPassword(hashPassword(account.getPassword()));
             return accountDao.create(account).getId();
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -30,6 +35,7 @@ public class AccountService {
             Account account = accountDao.retrieveByLogin(login.trim());
             return checkPassword(password, account.getPassword());
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
@@ -39,6 +45,7 @@ public class AccountService {
             AccountDao accountDao = daoHelper.createAccountDao();
             return accountDao.retrieveByLogin(login.trim());
         } catch (Exception e) {
+            LOG.debug(e.getMessage(), e);
             throw new ServiceException(e);
         }
     }
