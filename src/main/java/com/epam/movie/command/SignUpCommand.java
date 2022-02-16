@@ -36,7 +36,7 @@ public class SignUpCommand implements Command {
             User user = new User(accountService.create(account), firstName, lastName, 1, 1);
             userService.create(user);
 
-            return CommandResult.forward("index.jsp");
+            return CommandResult.redirect("controller?command=show_login_page");
         }
         request.setAttribute("errorLogin", "Incorrect data format, try again");
         return CommandResult.forward("WEB-INF/view/signup.jsp");

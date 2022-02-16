@@ -26,6 +26,9 @@ public class LoginCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        HttpSession previousSession = request.getSession();
+        previousSession.invalidate();
+
         HttpSession session = request.getSession();
 
         String login = request.getParameter("login");
@@ -41,8 +44,8 @@ public class LoginCommand implements Command {
                 session.setAttribute("role", role);
 
                 return isUserBanned(session, account, role)
-                        ? CommandResult.forward("WEB-INF/view/banned.jsp")
-                        : CommandResult.forward("WEB-INF/view/main.jsp");
+                        ? CommandResult.redirect("controller?command=banned")
+                        : CommandResult.redirect("controller?command=main_page");
             } else {
                 request.setAttribute("errorLogin", "Incorrect password or login");
                 return CommandResult.forward("index.jsp");

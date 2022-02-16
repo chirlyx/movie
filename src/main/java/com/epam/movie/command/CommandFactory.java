@@ -19,6 +19,8 @@ public class CommandFactory {
                 return new LoginCommand(userService, accountService);
             case "logout":
                 return new LogoutCommand();
+            case "banned":
+                return new ShowBannedPageCommand();
             case "show_movies":
                 return new ShowMoviePageCommand(movieService);
             case "show_deleted_movies":

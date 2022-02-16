@@ -8,7 +8,8 @@ import java.util.List;
 public enum CommandRegistry {
     MAIN_PAGE("main_page", Role.ADMIN, Role.USER),
     LOGIN("login", Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
-    LOGOUT("logout",Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
+    LOGOUT("logout", Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
+    BANNED("banned", Role.USER),
     SHOW_LOGIN_PAGE("show_login_page", Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
     SHOW_MOVIES("show_movies", Role.ADMIN, Role.USER),
     SHOW_DELETED_MOVIES("show_deleted_movies", Role.ADMIN),
@@ -16,7 +17,7 @@ public enum CommandRegistry {
     EDIT_MOVIE("edit_movie", Role.ADMIN),
     SIGN_UP("sign_up", Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
     SIGN_UP_PAGE("sign_up_page", Role.ADMIN, Role.USER, Role.UNAUTHORIZED),
-    SINGLE_MOVIE_PAGE("single_movie_page",Role.ADMIN, Role.USER),
+    SINGLE_MOVIE_PAGE("single_movie_page", Role.ADMIN, Role.USER),
     PROFILE("profile", Role.USER),
     SUBMIT_REVIEW("submit_review", Role.ADMIN, Role.USER),
     DELETE_REVIEW("delete_review", Role.ADMIN, Role.USER),

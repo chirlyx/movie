@@ -69,6 +69,7 @@
                     <br>
                 </c:if>
                 <button type="submit" class="btn btn-primary">Sign up</button>
+                <a href="${pageContext.request.contextPath}/controller?command=show_login_page">Back to log in</a>
             </form>
         </section>
     </section>
