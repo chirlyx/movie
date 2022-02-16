@@ -18,6 +18,7 @@ import java.util.Locale;
 
 public class CreateMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
+    private static final String DIRECTORY = "data";
     private static final String FILE_EXTENSION = ".jpg";
 
     private final ValidatorFactory validatorFactory = new ValidatorFactory();
@@ -66,7 +67,8 @@ public class CreateMovieCommand implements Command {
     }
 
     private void saveImage(HttpServletRequest request, Integer movieId) {
-        File uploadDir = new File(PATH);
+        String uploadPath = request.getServletContext().getRealPath("") + File.separator + DIRECTORY;
+        File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
@@ -74,12 +76,10 @@ public class CreateMovieCommand implements Command {
             for (Part part : request.getParts()) {
                 String fileName = part.getSubmittedFileName();
                 if (fileName != null) {
-                    part.write(PATH + File.separator + movieId + FILE_EXTENSION);
+                    part.write(uploadPath + File.separator + movieId + FILE_EXTENSION);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
+        } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
     }

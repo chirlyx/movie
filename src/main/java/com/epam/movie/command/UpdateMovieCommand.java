@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class UpdateMovieCommand implements Command {
-    private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
+    private static final String DIRECTORY = "http://localhost:8000/Users/User/Documents/0/%D0%B6%D0%B0%D0%B1%D0%B0/movie/target/movie-1.0-SNAPSHOT/data";
     private static final String FILE_EXTENSION = ".jpg";
 
     private final ValidatorFactory validatorFactory = new ValidatorFactory();
@@ -78,7 +78,7 @@ public class UpdateMovieCommand implements Command {
     }
 
     private void uploadNewPoster(HttpServletRequest request, Integer id) {
-        File uploadDir = new File(PATH);
+        File uploadDir = new File(DIRECTORY);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
@@ -86,7 +86,7 @@ public class UpdateMovieCommand implements Command {
             for (Part part : request.getParts()) {
                 String fileName = part.getSubmittedFileName();
                 if (fileName != null && fileName != "") {
-                    part.write(PATH + File.separator + id + FILE_EXTENSION);
+                    part.write(DIRECTORY + File.separator + id + FILE_EXTENSION);
                 }
             }
         } catch (IOException e) {
@@ -98,7 +98,7 @@ public class UpdateMovieCommand implements Command {
 
     private void deletePreviousPoster(Integer id) {
         try {
-            File moviePoster = new File(PATH + File.separator + id + FILE_EXTENSION);
+            File moviePoster = new File(DIRECTORY + File.separator + id + FILE_EXTENSION);
             moviePoster.delete();
         } catch (Exception e) {
             e.printStackTrace();

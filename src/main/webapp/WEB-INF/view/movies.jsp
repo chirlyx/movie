@@ -41,7 +41,10 @@
                     <c:forEach var="movie" items="${requestScope.movies}">
                         <div class="list-group-item py-3 my-2">
                             <div class="item">
+                                <img class="mr-3" src="${requestScope.path}${movie.id}.jpg">
+<%--
                                 <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
+--%>
                             </div>
                             <h5 class="my-1 ml-3">
                                 <c:if test="${sessionScope.account.isAdmin()}">
