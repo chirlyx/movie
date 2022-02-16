@@ -143,9 +143,7 @@
                                     <textarea id="updateDescription" rows="5" type="text" class="form-control"
                                               name="description"
                                               placeholder="Describe the movie"
-                                              required>
-                                              ${movie.description}
-                                    </textarea>
+                                              required>${movie.description}</textarea>
                                 </div>
                                     <%--<div class="form-group">
                                         <label for="updatePoster">Movie poster</label>
