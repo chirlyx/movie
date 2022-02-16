@@ -57,6 +57,14 @@ public class Account implements Entity {
         this.role = role;
     }
 
+    public Boolean isUser(){
+        return Role.USER.equals(getRole());
+    }
+
+    public Boolean isAdmin(){
+        return Role.ADMIN.equals(getRole());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
