@@ -21,6 +21,6 @@ public class LogoutCommand implements Command {
                 response.addCookie(cookie);
             }
         }
-        return CommandResult.redirect("controller");
+        return CommandResult.redirect("controller?command=show_login_page");
     }
 }

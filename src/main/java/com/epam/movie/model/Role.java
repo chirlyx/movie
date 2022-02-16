@@ -5,7 +5,8 @@ import java.util.List;
 
 public enum Role {
     ADMIN(1),
-    USER(2);
+    USER(2),
+    UNAUTHORIZED(3);
 
     private final Integer roleId;
 

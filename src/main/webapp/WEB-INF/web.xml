@@ -3,7 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--<error-page>
+    <error-page>
         <location>/WEB-INF/view/error.jsp</location>
-    </error-page>-->
+    </error-page>
+    <filter-mapping>
+        <filter-name>noCacheFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>banFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+    <filter-name>roleFilter</filter-name>
+    <url-pattern>/controller</url-pattern>
+</filter-mapping>
+    <filter-mapping>
+        <filter-name>languageFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
+
+
+
 </web-app>

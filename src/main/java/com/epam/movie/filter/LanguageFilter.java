@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-@WebFilter(urlPatterns = "/controller")
+@WebFilter(filterName = "languageFilter")
 public class LanguageFilter implements Filter {
 
     private static final String LANGUAGE_COOKIE_NAME = "lang";

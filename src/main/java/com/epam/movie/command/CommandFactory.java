@@ -29,6 +29,8 @@ public class CommandFactory {
                 return new ShowMainPageCommand();
             case "sign_up_page":
                 return new ShowSignUpPageCommand();
+            case "show_login_page":
+                return new ShowLoginPageCommand();
             case "profile":
                 return new ShowUserProfilePageCommand(reviewService, movieService);
             case "sign_up":

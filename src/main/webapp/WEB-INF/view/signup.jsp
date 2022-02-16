@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <html>
 <head>
     <title>Movie | Sign Up</title>
@@ -19,7 +19,7 @@
                     <hr>
                     <label for="inputLogin">Login</label>
                     <input id="inputLogin" type="text" class="form-control" name="login"
-                           pattern="^[a-zA-Z0-9]{4,25}$"
+
                            title="4 or more characters"
                            placeholder="Login" required>
                     <div class="valid-feedback">Input format is correct</div>
