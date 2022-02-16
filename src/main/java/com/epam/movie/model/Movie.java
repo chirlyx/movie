@@ -24,7 +24,7 @@ public class Movie implements Entity {
         this.year = year;
         this.category = Category.byId(categoryId);
         this.description = description;
-        this.deleted = deleted;
+        this.deleted = false;
     }
 
     public Movie() {
@@ -84,12 +84,12 @@ public class Movie implements Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(id, movie.id) && Objects.equals(title, movie.title) && Objects.equals(year, movie.year) && category == movie.category;
+        return Objects.equals(id, movie.id) && Objects.equals(title, movie.title) && Objects.equals(year, movie.year) && category == movie.category && Objects.equals(description, movie.description) && Objects.equals(deleted, movie.deleted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, year, category);
+        return Objects.hash(id, title, year, category, description, deleted);
     }
 
     @Override
@@ -99,6 +99,8 @@ public class Movie implements Entity {
                 ", title='" + title + '\'' +
                 ", year=" + year +
                 ", category=" + category +
+                ", description='" + description + '\'' +
+                ", deleted=" + deleted +
                 '}';
     }
 }

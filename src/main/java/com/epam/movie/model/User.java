@@ -19,6 +19,7 @@ public class User implements Entity{
 
     public User(){}
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -53,5 +54,33 @@ public class User implements Entity{
 
     public BanStatus getBanStatus() {
         return banStatus;
+    }
+
+    public void setBanStatus(BanStatus banStatus) {
+        this.banStatus = banStatus;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && status == user.status && banStatus == user.banStatus;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, status, banStatus);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", status=" + status +
+                ", banStatus=" + banStatus +
+                '}';
     }
 }

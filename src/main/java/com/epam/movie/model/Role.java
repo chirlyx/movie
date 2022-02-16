@@ -41,4 +41,11 @@ public enum Role {
     public Integer getRoleId() {
         return roleId;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                '}';
+    }
 }

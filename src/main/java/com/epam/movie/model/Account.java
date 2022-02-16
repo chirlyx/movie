@@ -24,6 +24,7 @@ public class Account implements Entity {
     public Account() {
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -54,14 +55,6 @@ public class Account implements Entity {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public Boolean isUser(){
-        return Role.USER.equals(getRole());
-    }
-
-    public Boolean isAdmin(){
-        return Role.ADMIN.equals(getRole());
     }
 
     @Override

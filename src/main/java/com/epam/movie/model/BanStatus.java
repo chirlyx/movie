@@ -37,4 +37,12 @@ public enum BanStatus {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "BanStatus{" +
+                "banStatusId=" + banStatusId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
