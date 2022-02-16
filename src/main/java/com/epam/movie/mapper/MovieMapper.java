@@ -9,12 +9,12 @@ import java.sql.SQLException;
 public class MovieMapper implements RowMapper{
     @Override
     public Entity map(ResultSet resultSet) throws SQLException {
-        Integer id = resultSet.getInt("id");
-        String title = resultSet.getString("title");
-        Integer year = resultSet.getInt("year");
-        Integer categoryId = resultSet.getInt("category_id");
-        String description = resultSet.getString("description");
-        Boolean deleted = resultSet.getBoolean("deleted");
+        final Integer id = resultSet.getInt("id");
+        final String title = resultSet.getString("title");
+        final Integer year = resultSet.getInt("year");
+        final Integer categoryId = resultSet.getInt("category_id");
+        final String description = resultSet.getString("description");
+        final Boolean deleted = resultSet.getBoolean("deleted");
         return new Movie(id, title, year, categoryId, description, deleted);
     }
 }
