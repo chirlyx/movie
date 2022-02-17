@@ -27,10 +27,12 @@ public class ShowMoviePageCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         String requestPage = request.getParameter("page");
-        int page = 1;
+        int page;
+        int realPage;
 
         if (validatePage(requestPage)) {
             page = Integer.parseInt(requestPage);
+            realPage = page;
             request.setAttribute("currentPage", page);
             if (page != 1) {
                 page = page - 1;
@@ -42,7 +44,7 @@ public class ShowMoviePageCommand implements Command {
 
         int numberOfRecords = movieService.numberOfActiveMovies();
         Integer numberOfPages = (int) Math.ceil((double) numberOfRecords / (double) RECORDS_LIMIT);
-        if (page>numberOfPages){
+        if (realPage > numberOfPages || realPage == 0) {
             return CommandResult.forward("WEB-INF/view/error.jsp");
         }
 

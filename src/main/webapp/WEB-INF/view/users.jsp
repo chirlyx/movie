@@ -34,7 +34,7 @@
                                   method="post">
                                 <div class="form-group">
                                     <label for="inputStatus">Change into:</label>
-                                    <select class="form-control" name="banStatus" id="inputStatus">
+                                    <select class="form-control" name="banStatus" id="inputStatus" required>
                                         <c:forEach var="banStatus" items="${requestScope.banStatuses}">
                                                 <option>${banStatus.name}</option>
                                         </c:forEach>

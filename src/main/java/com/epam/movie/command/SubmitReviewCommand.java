@@ -35,10 +35,14 @@ public class SubmitReviewCommand implements Command {
         String requestMark = request.getParameter("mark");
         String comment = request.getParameter("comment");
 
-        if (validateComment(comment)) {
+        if (validateComment(comment) && validateId(requestMark) && validateId(requestMovieId)) {
             int userId = account.getId();
             int movieId = Integer.parseInt(requestMovieId);
             int mark = Integer.parseInt(requestMark);
+
+            if(mark > 5 || mark < 0) {
+                return CommandResult.forward("WEB-INF/view/error.jsp");
+            }
 
             Review review = reviewService.submit(new Review(userId, movieId, mark, comment));
 
@@ -58,7 +62,7 @@ public class SubmitReviewCommand implements Command {
             userService.update(user);
             session.setAttribute("user", user);
         } else {
-            request.setAttribute("errorInput", "Incorrect data format, try again");
+            return CommandResult.forward("WEB-INF/view/error.jsp");
         }
 
         return CommandResult.redirect("controller?command=single_movie_page&movie=" + requestMovieId);
@@ -67,5 +71,10 @@ public class SubmitReviewCommand implements Command {
     private boolean validateComment(String comment) {
         Validator validator = validatorFactory.create(ValidatorRegistry.COMMENT, comment);
         return validator.isValid(comment, ValidatorRegistry.COMMENT);
+    }
+
+    private boolean validateId(String id) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.ID, id);
+        return validator.isValid(id, ValidatorRegistry.ID);
     }
 }

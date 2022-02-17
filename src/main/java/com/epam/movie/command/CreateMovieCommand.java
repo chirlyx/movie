@@ -1,6 +1,7 @@
 package com.epam.movie.command;
 
 import com.epam.movie.exception.ServiceException;
+import com.epam.movie.model.BanStatus;
 import com.epam.movie.model.Category;
 import com.epam.movie.model.Movie;
 import com.epam.movie.service.MovieService;
@@ -42,7 +43,14 @@ public class CreateMovieCommand implements Command {
 
         if (validateTitle(title) && validateYear(requestYear) && validateDescription(description)) {
             Integer year = Integer.parseInt(requestYear);
-            Integer categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
+            Integer categoryId;
+
+            try {
+                categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
+            } catch (IllegalArgumentException e) {
+                LOG.error(e.getMessage(), e);
+                return CommandResult.forward("WEB-INF/view/error.jsp");
+            }
 
             Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
 

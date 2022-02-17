@@ -55,7 +55,7 @@
                                         <div class="form-group row">
                                             <label for="mark" class="col-sm-2 col-form-label">Mark:</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control" name="mark" id="mark">
+                                                <select class="form-control" name="mark" id="mark" required>
                                                     <option>0</option>
                                                     <option>1</option>
                                                     <option>2</option>
@@ -72,8 +72,7 @@
                                                           rows="3" required></textarea>
                                             </div>
                                         </div>
-                                        <p class="card-text">With supporting text below as a natural lead-in to
-                                            additional content.</p>
+                                        <p class="card-text">Submit your review when ready!</p>
                                         <c:if test="${requestScope.errorInput != null}">
                                             <br>
                                             ${requestScope.errorInput}
@@ -124,6 +123,8 @@
 </section>
 
 <jsp:include page="element/footer.jsp"/>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/textarea-validator.js"></script>
 
 </body>
 </html>

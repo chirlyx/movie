@@ -4,12 +4,17 @@ import com.epam.movie.exception.ServiceException;
 import com.epam.movie.model.Category;
 import com.epam.movie.model.Movie;
 import com.epam.movie.service.MovieService;
+import com.epam.movie.validation.Validator;
+import com.epam.movie.validation.ValidatorFactory;
+import com.epam.movie.validation.ValidatorRegistry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class ShowEditMoviePageCommand implements Command {
+    private final ValidatorFactory validatorFactory = new ValidatorFactory();
+
     private final MovieService movieService;
 
     public ShowEditMoviePageCommand(MovieService movieService) {
@@ -30,9 +35,15 @@ public class ShowEditMoviePageCommand implements Command {
             request.setAttribute("categories", categories);
         }
         else {
+            if (!validateId(requestMovie)){
+                return CommandResult.forward("WEB-INF/view/error.jsp");
+            }
             try {
                 int movieId = Integer.parseInt(requestMovie);
                 Movie movie = movieService.retrieveById(movieId);
+                if (movie == null || movieId == 0){
+                    return CommandResult.forward("WEB-INF/view/error.jsp");
+                }
 
                 request.setAttribute("action", "update");
                 request.setAttribute("movie", movie);
@@ -42,5 +53,10 @@ public class ShowEditMoviePageCommand implements Command {
             }
         }
         return CommandResult.forward("WEB-INF/view/movieEdit.jsp");
+    }
+
+    private boolean validateId(String id) {
+        Validator validator = validatorFactory.create(ValidatorRegistry.ID, id);
+        return validator.isValid(id, ValidatorRegistry.ID);
     }
 }
