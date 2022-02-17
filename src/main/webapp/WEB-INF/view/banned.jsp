@@ -1,4 +1,9 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${cookie.lang.value}" />
+<fmt:setBundle basename="l10n.page.banned" var="loc" />
+<fmt:message bundle="${loc}" key="label.heading" var="heading" />
+<fmt:message bundle="${loc}" key="label.paragraph" var="paragraph" />
 <html>
 <head>
     <title>Title</title>
@@ -15,9 +20,9 @@
             <div class="col-lg-8">
                 <div class="list-group">
                     <div class="list-group-item py-3 my-3">
-                        <h2 class="mb-1">Your account is banned</h2>
+                        <h2 class="mb-1">${heading}</h2>
                         <hr>
-                        <p class="mb-1">While banned, no service is available.</p>
+                        <p class="mb-1">${paragraph}</p>
                     </div>
                 </div>
             </div>

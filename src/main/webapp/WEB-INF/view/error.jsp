@@ -1,4 +1,9 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${cookie.lang.value}" />
+<fmt:setBundle basename="l10n.page.error" var="loc" />
+<fmt:message bundle="${loc}" key="label.heading" var="heading" />
+<fmt:message bundle="${loc}" key="label.paragraph" var="paragraph" />
 <html>
 <head>
     <title>Error</title>
@@ -14,9 +19,9 @@
             <div class="col-lg-8">
                 <div class="list-group">
                     <div class="list-group-item py-3 my-3">
-                        <h2 class="mb-1">Sorry, an error occurred</h2>
+                        <h2 class="mb-1">${heading}</h2>
                         <hr>
-                        <p class="mb-1">Seems like something went wrong...</p>
+                        <p class="mb-1">${paragraph}</p>
                     </div>
                 </div>
             </div>
