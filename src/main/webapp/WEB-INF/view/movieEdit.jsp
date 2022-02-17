@@ -19,7 +19,7 @@
         <div class="row justify-content-center mx-0">
             <div class="col-lg-8">
                 <div class="list-group">
-                    <div class="list-group-item py-3 my-5">
+                    <div class="list-group-item py-3 my-3">
 
                         <c:if test="${requestScope.action eq 'create'}">
                             <form class="form-container needs-validation"

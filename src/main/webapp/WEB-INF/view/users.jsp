@@ -5,13 +5,14 @@
     <title>Users | Movie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/fit-screen.css"/>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/prevent-back-button.js"></script>--%>
 </head>
 <body>
 
 <jsp:include page="element/header.jsp"/>
 
-<section class="bg-light">
+<section class="bg-light fit">
     <div class="container-lg">
         <div class="row justify-content-center mx-0">
             <div class="col-lg-8">
