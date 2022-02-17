@@ -1,0 +1,22 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item {
+    width: 180px;
+    min-height: 120px;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
+
+.list-group hr {
+    margin-left: 187px;
+}
+
+.restore-btn {
+    position: absolute;
+    right: 19px;
+    top: 12px;
+}
