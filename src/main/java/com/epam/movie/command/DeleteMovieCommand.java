@@ -11,6 +11,9 @@ public class DeleteMovieCommand implements Command {
     private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
     private static final String FILE_EXTENSION = ".jpg";
 
+    private static final String SHOW_MOVIES_COMMAND = "controller?command=show_movies&page=1";
+    private static final String MOVIE_PARAMETER = "movie";
+
     private final MovieService movieService;
 
     public DeleteMovieCommand(MovieService movieService) {
@@ -19,14 +22,14 @@ public class DeleteMovieCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        String requestId = request.getParameter("movie");
+        String requestId = request.getParameter(MOVIE_PARAMETER);
         Integer id = Integer.parseInt(requestId);
 
         movieService.delete(id);
 
         //deletePoster(id);
 
-        return CommandResult.redirect("controller?command=show_movies&page=1");
+        return CommandResult.redirect(SHOW_MOVIES_COMMAND);
     }
 
     private void deletePoster(Integer id) {

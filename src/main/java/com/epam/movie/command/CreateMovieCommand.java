@@ -20,9 +20,19 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class CreateMovieCommand implements Command {
-    private static final String PATH = "C:\\Users\\User\\Documents\\0\\жаба\\movie\\src\\main\\webapp\\static\\data";
     private static final String DIRECTORY = "data";
     private static final String FILE_EXTENSION = ".jpg";
+
+    private static final String TITLE_PARAMETER = "title";
+    private static final String YEAR_PARAMETER = "year";
+    private static final String CATEGORY_PARAMETER = "category";
+    private static final String DESCRIPTION_PARAMETER = "description";
+    private static final String ERROR_ATTRIBUTE = "errorInput";
+    private static final String ERROR_MESSAGE = "Incorrect data format, try again";
+
+    private static final String ERROR_JSP = "WEB-INF/view/error.jsp";
+    private static final String SHOW_MOVIES_COMMAND = "controller?command=show_movies&page=1";
+    private static final String CREATE_MOVIE_COMMAND = "controller?command=edit_movie&movie=new";
 
     private static final Logger LOG = LoggerFactory.getLogger(CreateMovieCommand.class);
 
@@ -36,10 +46,10 @@ public class CreateMovieCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        String title = request.getParameter("title");
-        String requestYear = request.getParameter("year");
-        String categoryName = request.getParameter("category");
-        String description = request.getParameter("description");
+        String title = request.getParameter(TITLE_PARAMETER);
+        String requestYear = request.getParameter(YEAR_PARAMETER);
+        String categoryName = request.getParameter(CATEGORY_PARAMETER);
+        String description = request.getParameter(DESCRIPTION_PARAMETER);
 
         if (validateTitle(title) && validateYear(requestYear) && validateDescription(description)) {
             Integer year = Integer.parseInt(requestYear);
@@ -49,17 +59,17 @@ public class CreateMovieCommand implements Command {
                 categoryId = Category.valueOf(categoryName.toUpperCase(Locale.ROOT)).getCategoryId();
             } catch (IllegalArgumentException e) {
                 LOG.error(e.getMessage(), e);
-                return CommandResult.forward("WEB-INF/view/error.jsp");
+                return CommandResult.forward(ERROR_JSP);
             }
 
             Integer movieId = movieService.create(new Movie(title, year, categoryId, description));
 
             saveImage(request, movieId);
 
-            return CommandResult.redirect("controller?command=show_movies&page=1");
+            return CommandResult.redirect(SHOW_MOVIES_COMMAND);
         } else {
-            request.setAttribute("errorInput", "Incorrect data format, try again");
-            return CommandResult.redirect("controller?command=edit_movie&movie=new");
+            request.setAttribute(ERROR_ATTRIBUTE, ERROR_MESSAGE);
+            return CommandResult.redirect(CREATE_MOVIE_COMMAND);
         }
     }
 
