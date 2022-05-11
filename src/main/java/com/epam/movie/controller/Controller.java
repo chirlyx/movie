@@ -6,10 +6,13 @@ import com.epam.movie.command.CommandResult;
 import com.epam.movie.db.LockingConnectionPool;
 import com.epam.movie.exception.ServiceException;
 
-import java.io.*;
+import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 5,

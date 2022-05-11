@@ -37,6 +37,7 @@ public class ShowSingleMoviePageCommand implements Command {
             Review review = reviewService.retrieveByUserAndMovieId(userId, movieId);
             request.setAttribute("mark", review.getMark());
             request.setAttribute("comment", review.getComment());
+
         }
 
         request.setAttribute("movie", movie);

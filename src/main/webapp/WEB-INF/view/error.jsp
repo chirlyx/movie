@@ -22,6 +22,9 @@
                         <h2 class="mb-1">${heading}</h2>
                         <hr>
                         <p class="mb-1">${paragraph}</p>
+                        <c:if test="${requestScope.isInputError}">
+                            <p style="color: red">The input is not valid, it should be at least 4 symbols long, try again</p>
+                        </c:if>
                     </div>
                 </div>
             </div>

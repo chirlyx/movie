@@ -61,7 +61,9 @@ public class SubmitReviewCommand implements Command {
             user.setStatus(updatedStatus);
             userService.update(user);
             session.setAttribute("user", user);
+            request.setAttribute("isInputError", false);
         } else {
+            request.setAttribute("isInputError", true);
             return CommandResult.forward("WEB-INF/view/error.jsp");
         }
 

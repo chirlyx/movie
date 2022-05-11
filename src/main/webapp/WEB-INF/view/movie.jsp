@@ -25,8 +25,7 @@
                             <div class="item">
                                 <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
                             </div>
-                            <h2 class="mb-1">${requestScope.movie.title}, ${requestScope.movie.year}
-                                (${requestScope.movie.id})</h2>
+                            <h2 class="mb-1">${requestScope.movie.title}, ${requestScope.movie.year}</h2>
                             <hr>
                             <p class="mb-1">Description: ${requestScope.movie.description}</p>
                             <p class="mb-1">Category: ${requestScope.movie.category.name}</p>

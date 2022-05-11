@@ -54,7 +54,6 @@
                                 <c:if test="${sessionScope.account.isUser()}">
                                     <a href="${pageContext.request.contextPath}/controller?command=single_movie_page&movie=${movie.id}">${movie.title}</a>
                                 </c:if>
-                                (${movie.id})
                             </h5>
                             <hr>
                             <p class="mb-1">Year: ${movie.year}</p>

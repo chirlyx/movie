@@ -4,12 +4,12 @@ public enum ValidatorRegistry {
     LOGIN("^[a-zA-Z0-9]{4,25}$"),
     PASSWORD("^[a-zA-Z0-9]{8,50}$"),
     NAME("^[a-zA-Z]{2,35}$"),
-    TITLE("^[a-zA-Z0-9 .,]{4,35}$"),
+    TITLE("^[a-zA-Z0-9 .,]{4,44}$"),
     YEAR("^[0-9]{4,4}$"),
     DESCRIPTION("^[a-zA-Z0-9 .,]{4,500000}$"),
     COMMENT("^[a-zA-Z0-9 .,]{4,500000}$"),
-    ID("^[0-9]$"),
-    DEFAULT("^[a-zA-Z0-9 .,]");
+    ID("^[0-9]{1,}$"),
+    DEFAULT("^[a-zA-Z0-9 .,],{1,}");
 
     private final String regex;
 

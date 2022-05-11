@@ -40,7 +40,7 @@
                                     <div class="valid-feedback">Input format is correct</div>
                                     <div class="invalid-feedback">
                                         Please notice that the field can contain only latin letters and numbers and
-                                        should be between 4 and 25 symbols long.
+                                        should be between 4 and 44 symbols long.
                                     </div>
                                 </div>
 
@@ -52,8 +52,7 @@
                                            placeholder="Year" required>
                                     <div class="valid-feedback">Input format is correct</div>
                                     <div class="invalid-feedback">
-                                        Please notice that the field can contain only latin letters and numbers and
-                                        should be between 4 and 25 symbols long.
+                                        Please notice that the field can contain only numbers (e.g. 1999)
                                     </div>
                                 </div>
 
@@ -116,6 +115,11 @@
                                            pattern="^[a-zA-Z0-9 .,]{4,35}$"
                                            title="4 or more characters"
                                            placeholder="Title" required>
+                                    <div class="valid-feedback">Input format is correct</div>
+                                    <div class="invalid-feedback">
+                                        Please notice that the field can contain only latin letters and numbers and
+                                        should be between 4 and 44 symbols long.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputYear">Year</label>
@@ -124,6 +128,10 @@
                                            pattern="^[0-9]{4,4}$"
                                            title="4 numeric characters"
                                            placeholder="Year" required>
+                                    <div class="valid-feedback">Input format is correct</div>
+                                    <div class="invalid-feedback">
+                                        Please notice that the field can contain only numbers (e.g. 1999)
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCategory">Category</label>

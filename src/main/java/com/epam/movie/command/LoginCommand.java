@@ -31,6 +31,8 @@ public class LoginCommand implements Command {
 
         HttpSession session = request.getSession();
 
+        session.setAttribute("banStatus", BanStatus.ACTIVE);
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 

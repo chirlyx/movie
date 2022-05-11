@@ -28,10 +28,7 @@
                             <div class="item">
                                 <img class="mr-3" src="${pageContext.request.contextPath}/static/data/${movie.id}.jpg">
                             </div>
-                            <h5 class="my-1 ml-3">
-                                    <a href="${pageContext.request.contextPath}/controller?command=edit_movie&movie=${movie.id}">${movie.title}</a>
-                                (${movie.id})
-                            </h5>
+                            <h5 class="my-1 ml-3">${movie.title}</h5>
 
                             <hr>
                             <p class="mb-1">Year: ${movie.year}</p>
